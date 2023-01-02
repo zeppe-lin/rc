@@ -1,0 +1,8 @@
+TODO rc
+
+  * add rc(8) manual page
+    may be use https://man.netbsd.org/NetBSD-6.1/rc.8 as reference
+
+
+vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+End of file.
