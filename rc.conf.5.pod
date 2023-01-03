@@ -58,7 +58,9 @@ Example: C<HOSTNAME=pluto>
 
 =item B<SYSLOG>="I<STRING>"
 
-Specifies the system logging daemon to run at startup.
+Specifies the system logging daemon to run at startup.  The daemon
+specified in this string must have a matching start/stop script in
+C</etc/rc.d>.
 
 Example: C<SYSLOG=sysklogd>
 
@@ -75,6 +77,12 @@ argument C<stop>.
 Example: C<SERVICES='lo crond net sshd'>
 
 =back
+
+The reason why the B<SYSLOG> is specified separately from the
+B<SERVICE> variable is as follows: firstly, the syslog daemon also
+starts in the single-user mode, and secondly, it is needed before the
+start of any services, so that the services can log the result if their
+work.
 
 =head1 EXAMPLE
 
