@@ -37,8 +37,6 @@ Runtime:
 
   * setfont(8) and loadkeys(1) from kbd distribution to set system
     font and keyboard
-  * fuser(1) from psmisc distribution is used in rc.netfs to
-    unmount network volumes
   * vgscan(8), vgchange(8) and lvm(8) from lvm distribution to
     create device-mapper device nodes and scan for LVM volume
     groups
