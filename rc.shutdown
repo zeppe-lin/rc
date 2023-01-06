@@ -2,10 +2,6 @@
 #
 # /etc/rc.shutdown: system shutdown script
 #
-# XXX Running this script directly is not recommended.
-#
-# See init(1) for more information.
-#
 
 # Load configuration.
 . /etc/rc.conf
