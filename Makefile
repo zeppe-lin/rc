@@ -3,7 +3,11 @@
 # rc version
 VERSION = 2.32.1
 
-all: rc.conf.5
+CONFIGS  = inittab rc.conf
+SCRIPTS  = rc rc.fix rc.local rc.modules rc.multi rc.shutdown rc.single
+MANPAGES = rc.conf.5
+
+all: ${MANPAGES}
 
 %: %.pod
 	pod2man --nourls -r ${VERSION} -c ' ' -n $(basename $@) \
@@ -17,37 +21,23 @@ check:
 		curl -o /dev/null -sw "%{url} [%{http_code}]\n" '{}'
 
 install: all
-	mkdir -p        ${DESTDIR}/etc
-	cp inittab      ${DESTDIR}/etc/
-	cp rc.conf      ${DESTDIR}/etc/
-	cp rc           ${DESTDIR}/etc/
-	cp rc.fix       ${DESTDIR}/etc/
-	cp rc.local     ${DESTDIR}/etc/
-	cp rc.modules   ${DESTDIR}/etc/
-	cp rc.multi     ${DESTDIR}/etc/
-	cp rc.shutdown  ${DESTDIR}/etc/
-	cp rc.single    ${DESTDIR}/etc/
-	mkdir -p        ${DESTDIR}/usr/share/man/man5
-	cp rc.conf.5    ${DESTDIR}/usr/share/man/man5/
-	mkdir -p        ${DESTDIR}/var/log      ${DESTDIR}/var/lib/urandom
-	touch           ${DESTDIR}/var/log/boot ${DESTDIR}/var/lib/urandom/seed
-	chmod 0640      ${DESTDIR}/var/log/boot ${DESTDIR}/var/lib/urandom/seed
+	mkdir -p ${DESTDIR}/etc
+	cp -f ${CONFIGS} ${SCRIPTS} ${DESTDIR}/etc/
+	cd ${DESTDIR}/etc && chmod 0644 ${CONFIGS}
+	cd ${DESTDIR}/etc && chmod 0755 ${SCRIPTS}
+	mkdir -p          ${DESTDIR}/usr/share/man/man5
+	cp -f ${MANPAGES} ${DESTDIR}/usr/share/man/man5/
+	mkdir -p   ${DESTDIR}/var/log      ${DESTDIR}/var/lib/urandom
+	touch      ${DESTDIR}/var/log/boot ${DESTDIR}/var/lib/urandom/seed
+	chmod 0640 ${DESTDIR}/var/log/boot ${DESTDIR}/var/lib/urandom/seed
 
 uninstall:
-	rm -f ${DESTDIR}/etc/inittab
-	rm -f ${DESTDIR}/etc/rc.conf
-	rm -f ${DESTDIR}/etc/rc
-	rm -f ${DESTDIR}/etc/rc.fix
-	rm -f ${DESTDIR}/etc/rc.local
-	rm -f ${DESTDIR}/etc/rc.modules
-	rm -f ${DESTDIR}/etc/rc.multi
-	rm -f ${DESTDIR}/etc/rc.shutdown
-	rm -f ${DESTDIR}/etc/rc.single
-	rm -f ${DESTDIR}/usr/share/man/man5/rc.conf.5
+	cd ${DESTDIR}/etc                && rm -f ${CONFIGS} ${SCRIPTS}
+	cd ${DESTDIR}/usr/share/man/man5 && rm -f ${MANPAGES}
 	rm -f ${DESTDIR}/var/log/boot
 	rm -f ${DESTDIR}/var/lib/urandom/seed
 
 clean:
 	rm -f rc.conf.5
 
-.PHONY: install uninstall clean
+.PHONY: all check install uninstall clean
