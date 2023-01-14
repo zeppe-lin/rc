@@ -3,8 +3,9 @@ ABOUT
 This directory contains *rc*, an init scripts used in conjunction with
 *sysvinit* on *Zeppe-Lin*.
 
-This *rc* distribution is a fork of CRUX' init scripts (extracted
-from *rc* port) with the following differences:
+This *rc* distribution is a fork of CRUX' init scripts (extracted from
+*rc* port) with the following differences:
+
   * rewritten in POSIX sh(1p)
   * added rc.conf(5) man page
   * added mdadm(1) to assemble raid volumes
@@ -53,9 +54,9 @@ Tests:
 
 INSTALL
 -------
-The shell command `make && make install` should build and install this
-package.  See [rc.conf(5)](rc.conf.5.pod) and customize `rc.conf` file
-to adjust init conform your needs.
+The shell commands `make && make install` should build and install
+this package.  See [rc.conf(5)](rc.conf.5.pod) and customize `rc.conf`
+file to adjust init conform your needs.
 
 The shell command `make check` should start some tests.
 
