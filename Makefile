@@ -2,11 +2,10 @@
 
 include config.mk
 
-CONFIGS  = inittab rc.conf
-SCRIPTS  = rc rc.fix rc.local rc.modules rc.multi rc.shutdown rc.single
-MANPAGES = rc.conf.5
+RCS  = rc rc.fix rc.local rc.modules rc.multi rc.shutdown rc.single
+MAN5 = rc.conf.5
 
-all: ${MANPAGES}
+all: ${MAN5}
 
 %: %.pod
 	pod2man --nourls -r ${VERSION} -c ' ' -n $(basename $@) \
@@ -21,22 +20,22 @@ check:
 
 install: all
 	mkdir -p ${DESTDIR}/etc
-	cp -f ${CONFIGS} ${SCRIPTS} ${DESTDIR}/etc/
-	cd ${DESTDIR}/etc && chmod 0644 ${CONFIGS}
-	cd ${DESTDIR}/etc && chmod 0755 ${SCRIPTS}
-	mkdir -p          ${DESTDIR}/usr/share/man/man5
-	cp -f ${MANPAGES} ${DESTDIR}/usr/share/man/man5/
+	mkdir -p ${DESTDIR}${MANPREFIX}/man5
+	cp -f ${RCS}  ${DESTDIR}/etc/
+	cp -f ${MAN5} ${DESTDIR}${MANPREFIX}/man5/
+	cd ${DESTDIR}/etc              && chmod 0755 ${RCS}
+	cd ${DESTDIR}${MANPREFIX}/man5 && chmod 0644 ${MAN5}
 	mkdir -p   ${DESTDIR}/var/log      ${DESTDIR}/var/lib/urandom
 	touch      ${DESTDIR}/var/log/boot ${DESTDIR}/var/lib/urandom/seed
 	chmod 0640 ${DESTDIR}/var/log/boot ${DESTDIR}/var/lib/urandom/seed
 
 uninstall:
-	cd ${DESTDIR}/etc                && rm -f ${CONFIGS} ${SCRIPTS}
-	cd ${DESTDIR}/usr/share/man/man5 && rm -f ${MANPAGES}
+	cd ${DESTDIR}/etc              && rm -f ${RCS}
+	cd ${DESTDIR}${MANPREFIX}/man5 && rm -f ${MAN5}
 	rm -f ${DESTDIR}/var/log/boot
 	rm -f ${DESTDIR}/var/lib/urandom/seed
 
 clean:
-	rm -f rc.conf.5
+	rm -f ${MAN5}
 
 .PHONY: all check install uninstall clean
