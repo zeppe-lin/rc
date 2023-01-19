@@ -1,7 +1,6 @@
 .POSIX:
 
-# rc version
-VERSION = 2.32.1
+include config.mk
 
 CONFIGS  = inittab rc.conf
 SCRIPTS  = rc rc.fix rc.local rc.modules rc.multi rc.shutdown rc.single
