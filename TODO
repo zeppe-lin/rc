@@ -4,7 +4,10 @@ TODO rc
 	    May be use https://man.netbsd.org/NetBSD-6.1/rc.8 as
 	    reference?
 
-	[ ] printf() is in /usr/bin: that may breaks "separate /usr"
-	    boot.
+	[ ] printf() isn't builtin by POSIX (only in dash), and by
+	    default is located in /usr/bin: that may breaks
+	    "separate /usr" boot.  The replacement "echo -n" also is
+	    not POSIX command (-n is extension).  Figure out what can
+	    be done.
 
 End of file.
