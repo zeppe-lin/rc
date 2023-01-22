@@ -12,7 +12,7 @@
 echo "The system is coming down.  Please wait."
 
 if [ "$PREVLEVEL" = "2" ]; then
-	# Shutdown services
+	# Shutdown services.
 	if [ -n "$SERVICES" ]; then
 		for service in $SERVICES; do
 			R_SERVICES="$service $R_SERVICES"
@@ -43,7 +43,7 @@ fi
 # Unmount file systems.
 /bin/umount -a -d -r -t nosysfs,noproc,nodevtmpfs
 if [ -x /sbin/lvm ]; then
-	# Change the active state of LVs
+	# Change the active state of LVs.
 	/sbin/vgchange --ignorelockingfailure -a n
 fi
 /bin/umount -a -r
