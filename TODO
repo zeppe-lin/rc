@@ -1,5 +1,7 @@
 TODO rc
 
+	[ ] switch to https://git.zx2c4.com/seedrng ?
+
 	[ ] Add rc(8) manual page.
 	    May be use https://man.netbsd.org/NetBSD-6.1/rc.8 as
 	    reference?
