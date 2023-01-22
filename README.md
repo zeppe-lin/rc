@@ -1,11 +1,10 @@
 ABOUT
 -----
-This directory contains *rc*, an init scripts used in conjunction with
-*sysvinit* on *Zeppe-Lin*.
+This directory contains _rc_, an init scripts used in conjunction with
+_sysvinit_ on _Zeppe-Lin_.
 
-This *rc* distribution is a fork of CRUX' init scripts (extracted from
-*rc* port) with the following differences:
-
+This _rc_ distribution is a fork of CRUX' init scripts (extracted from
+_rc_ port) with the following differences:
   * rewritten in POSIX sh(1p)
   * added rc.conf(5) man page
   * added mdadm(1) to assemble raid volumes
@@ -55,17 +54,21 @@ Tests:
 INSTALL
 -------
 The shell commands `make && make install` should build and install
-this package.  See [rc.conf(5)](rc.conf.5.pod) and customize `rc.conf`
-file to adjust init conform your needs.
+this package.  Next, you need to create/customize `/etc/rc.conf` and
+`/etc/inittab` files.  See [rc.conf(5)](rc.conf.5.pod) and inittab(5)
+respectively, and/or _Zeppe-Lin_ [_rc_ package][1] for configuration
+example.
 
 The shell command `make check` should start some tests.
 
 LICENSE
 -------
-*rc* is licensed through the GNU General Public License v3 or later
+_rc_ is licensed through the GNU General Public License v3 or later
 <https://gnu.org./licenses/gpl.html>.
-Read the *COPYING* file for copying conditions.
-Read the *COPYRIGHT* file for copyright notices.
+Read the _COPYING_ file for copying conditions.
+Read the _COPYRIGHT_ file for copyright notices.
+
+[1]: https://github.com/zeppe-lin/pkgsrc/tree/master/core/rc
 
 <!-- vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
 End of file. -->
