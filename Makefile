@@ -8,7 +8,7 @@ MAN5 = rc.conf.5
 all: ${MAN5}
 
 %: %.pod
-	pod2man --nourls -r ${VERSION} -c ' ' -n $(basename $@) \
+	pod2man --nourls -r "rc ${VERSION}" -c ' ' -n $(basename $@) \
 		-s $(subst .,,$(suffix $@)) $< > $@
 
 check:
