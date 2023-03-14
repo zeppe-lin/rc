@@ -20,19 +20,24 @@ check:
 		  -sw "[%{http_code}] %{url}\n" '{}' \
 		| sort -u
 
-install: all
-	mkdir -p ${DESTDIR}/etc
+install-dirs:
+	mkdir -p ${DESTDIR}${SYSCONFDIR}
 	mkdir -p ${DESTDIR}${MANPREFIX}/man5
-	cp -f ${RCS}  ${DESTDIR}/etc/
+	mkdir -p ${DESTDIR}/var/log
+	mkdir -p ${DESTDIR}/var/lib/urandom
+
+install: all install-dirs
+	cp -f ${RCS}  ${DESTDIR}${SYSCONFDIR}
 	cp -f ${MAN5} ${DESTDIR}${MANPREFIX}/man5/
-	cd ${DESTDIR}/etc              && chmod 0755 ${RCS}
+	touch ${DESTDIR}/var/log/boot
+	touch ${DESTDIR}/var/lib/urandom/seed
+	cd ${DESTDIR}${SYSCONFDIR}     && chmod 0755 ${RCS}
 	cd ${DESTDIR}${MANPREFIX}/man5 && chmod 0644 ${MAN5}
-	mkdir -p   ${DESTDIR}/var/log      ${DESTDIR}/var/lib/urandom
-	touch      ${DESTDIR}/var/log/boot ${DESTDIR}/var/lib/urandom/seed
-	chmod 0640 ${DESTDIR}/var/log/boot ${DESTDIR}/var/lib/urandom/seed
+	chmod 0640 ${DESTDIR}/var/log/boot
+	chmod 0640 ${DESTDIR}/var/lib/urandom/seed
 
 uninstall:
-	cd ${DESTDIR}/etc              && rm -f ${RCS}
+	cd ${DESTDIR}${SYSCONFDIR}     && rm -f ${RCS}
 	cd ${DESTDIR}${MANPREFIX}/man5 && rm -f ${MAN5}
 	rm -f ${DESTDIR}/var/log/boot
 	rm -f ${DESTDIR}/var/lib/urandom/seed
