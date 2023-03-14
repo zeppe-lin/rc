@@ -2,4 +2,5 @@
 VERSION = 2.32.1
 
 # paths
-MANPREFIX = /usr/share/man
+SYSCONFDIR = /etc
+MANPREFIX  = /usr/share/man
