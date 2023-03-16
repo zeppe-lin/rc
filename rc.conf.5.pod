@@ -13,9 +13,9 @@ B</etc/rc.conf>
 =head1 DESCRIPTION
 
 This manual page describes the format of the F</etc/rc.conf> file.
-This file is a simple POSIX L<sh(1)|https://www.mankier.com/1/dash>
-script that defines font, timezone, hostname and services which are
-used on system initialization and shutdown.
+This file is a simple POSIX L<sh(1)> script that defines font,
+timezone, hostname and services which are used on system initialization
+and shutdown.
 
 The file consists of a number of variable assignments of the form
 C<variable=value>.  Comments can be specified by putting a hash (C<#>)
@@ -28,8 +28,7 @@ The different configuration variables are:
 =item B<FONT>="I<STRING>"
 
 Specifies which console font to load at system startup.  The contents
-of this variable will be passed as argument to
-L<setfont(8)|https://www.mankier.com/8/setfont>.
+of this variable will be passed as argument to L<setfont(8)>.
 The available fonts are located in F</usr/share/kbd/consolefonts/>.
 
 Example: C<FONT=default>
@@ -37,8 +36,7 @@ Example: C<FONT=default>
 =item B<KEYMAP>="I<STRING>"
 
 Specifies which console keyboard map to load at system startup.  The
-contents of this variable will be passed as argument to
-L<loadkeys(1)|https://www.mankier.com/1/loadkeys>.
+contents of this variable will be passed as argument to L<loadkeys(1)>.
 The available keyboard maps are located in F</usr/share/kbd/keymaps/>.
 
 Example: C<KEYMAP=default>
