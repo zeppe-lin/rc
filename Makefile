@@ -18,7 +18,7 @@ install-dirs:
 	mkdir -p ${DESTDIR}/var/lib/urandom
 
 install: all install-dirs
-	cp -f ${RCS}  ${DESTDIR}${SYSCONFDIR}
+	cp -f ${RCS}  ${DESTDIR}${SYSCONFDIR}/
 	cp -f ${MAN5} ${DESTDIR}${MANPREFIX}/man5/
 	touch ${DESTDIR}/var/log/boot
 	touch ${DESTDIR}/var/lib/urandom/seed
