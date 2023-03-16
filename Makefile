@@ -11,13 +11,11 @@ all: ${MAN5}
 	pod2man -r "rc ${VERSION}" -c ' ' -n $(basename $@) \
 		-s $(subst .,,$(suffix $@)) $< > $@
 
-install-dirs:
+install: all
 	mkdir -p ${DESTDIR}${SYSCONFDIR}
 	mkdir -p ${DESTDIR}${MANPREFIX}/man5
 	mkdir -p ${DESTDIR}/var/log
 	mkdir -p ${DESTDIR}/var/lib/urandom
-
-install: all install-dirs
 	cp -f ${RCS}  ${DESTDIR}${SYSCONFDIR}/
 	cp -f ${MAN5} ${DESTDIR}${MANPREFIX}/man5/
 	touch ${DESTDIR}/var/log/boot
@@ -36,4 +34,4 @@ uninstall:
 clean:
 	rm -f ${MAN5}
 
-.PHONY: all install-dirs install uninstall clean
+.PHONY: all install uninstall clean
