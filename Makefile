@@ -8,8 +8,8 @@ MAN5 = rc.conf.5
 all: ${MAN5}
 
 %: %.pod
-	pod2man --nourls -r "rc ${VERSION}" -c ' ' \
-		-n $(basename $@) -s $(subst .,,$(suffix $@)) $< > $@
+	pod2man -r "rc ${VERSION}" -c ' ' -n $(basename $@) \
+		-s $(subst .,,$(suffix $@)) $< > $@
 
 install-dirs:
 	mkdir -p ${DESTDIR}${SYSCONFDIR}
