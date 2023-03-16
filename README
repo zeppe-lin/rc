@@ -52,19 +52,12 @@ REQUIREMENTS
 		* fc-cache(1) from fontconfig distribution to build font
 		  information cache files
 
-	Tests:
-
-		* podchecker(1pm) to check PODs for errors
-		* curl(1) to check URLs for response code
-
 INSTALL
 
 	The shell commands "make && make install" should build and install
 	this package.  Next, you need to create/customize /etc/rc.conf and
 	/etc/inittab files.  See rc.conf(5) and inittab(5) respectively,
 	and/or Zeppe-Lin rc package for configuration example:
-
-	The shell command "make check" should start some tests.
 
 LICENSE
 
