@@ -24,6 +24,12 @@ if [ -x /sbin/mdadm ]; then
 	/sbin/mdadm --assemble --scan
 fi
 
+# Parse crypttab and map encrypted volumes.
+if [ -x /sbin/cryptmount ] && [ -x /sbin/cryptsetup.static ];
+then
+	/sbin/cryptmount -M
+fi
+
 # Mount root read-only.
 /bin/mount -o remount,ro /
 

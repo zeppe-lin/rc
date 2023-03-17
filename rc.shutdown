@@ -43,6 +43,11 @@ fi
 
 # Unmount file systems.
 /bin/umount -a -d -r -t nosysfs,noproc,nodevtmpfs
+if [ -x /sbin/cryptmount ] && [ -x /sbin/cryptsetup.static ];
+then
+	# Unmap encrypted volumes.
+	/sbin/cryptmount -U
+fi
 if [ -x /sbin/lvm ]; then
 	# Change the active state of LVs.
 	/sbin/vgchange --ignorelockingfailure -a n
