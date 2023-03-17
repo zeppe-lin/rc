@@ -1,5 +1,6 @@
-# rc version
-VERSION = 2.32.1
+# project metadata
+NAME       = rc
+VERSION    = 2.33
 
 # paths
 SYSCONFDIR = /etc
