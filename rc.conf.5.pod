@@ -77,7 +77,7 @@ Example: C<SERVICES='lo crond net sshd'>
 =back
 
 The reason why the B<SYSLOG> is specified separately from the
-B<SERVICE> variable is as follows: firstly, the syslog daemon also
+B<SERVICES> variable is as follows: firstly, the syslog daemon also
 starts in the single-user mode, and secondly, it is needed before the
 start of any services, so that the services can log the result if their
 work.
