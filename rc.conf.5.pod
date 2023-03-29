@@ -13,7 +13,7 @@ B</etc/rc.conf>
 =head1 DESCRIPTION
 
 This manual page describes the format of the F</etc/rc.conf> file.
-This file is a simple POSIX L<sh(1)> script that defines font,
+This file is a simple POSIX L<sh(1p)> script that defines font,
 timezone, hostname and services which are used on system initialization
 and shutdown.
 
