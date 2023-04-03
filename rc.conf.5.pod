@@ -39,7 +39,7 @@ Specifies which console keyboard map to load at system startup.  The
 contents of this variable will be passed as argument to L<loadkeys(1)>.
 The available keyboard maps are located in F</usr/share/kbd/keymaps/>.
 
-Example: C<KEYMAP=default>
+Example: C<KEYMAP=us>
 
 =item B<TIMEZONE>="I<STRING>"
 
