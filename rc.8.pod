@@ -44,10 +44,14 @@ B<rc.d/> - startup and shutdown scripts
 
 =head1 DESCRIPTION
 
+=begin comment
+
 TODO: rc
 TODO: rc.single
 TODO: rc.multi
 TODO: sort description items
+
+=end comment
 
 B<rc.modules> is a command script to which local
 kernel module initialization actions can be added.  It is (nearly) the
