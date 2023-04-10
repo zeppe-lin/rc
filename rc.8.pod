@@ -49,6 +49,10 @@ TODO: rc.single
 TODO: rc.multi
 TODO: sort description items
 
+B<rc.modules> is a command script to which local
+kernel module initialization actions can be added.  It is (nearly) the
+last thing invoked by B<rc> during system boot.
+
 B<rc.local> is a command script to which local boot-time actions can
 be added.  It is (nearly) the last thing invoked by B<rc.multi> during
 a normal boot.
