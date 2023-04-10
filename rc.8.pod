@@ -46,6 +46,8 @@ B<rc.d/> - startup and shutdown scripts
 
 TODO
 
+B<rc.d/> is the directory which contains various L<sh(1p)> scripts, one for each service, which are called by B<rc.multi> at startup, B<rc.shutdown> at shutdown, and as necessary during system operation to stop, start, restart, reload or otherwise control the service.
+
 =head1 FILES
 
 =over 18
