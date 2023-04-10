@@ -38,7 +38,7 @@ B<rc.d/> - startup and shutdown scripts
   │   └── rc.local
   ├── rc.shutdown
   └── rc.single
-  <pre>
+  </pre>
 
 =end html
 
