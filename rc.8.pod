@@ -44,7 +44,10 @@ B<rc.d/> - startup and shutdown scripts
 
 =head1 DESCRIPTION
 
-TODO
+TODO: rc
+TODO: rc.single
+TODO: rc.multi
+TODO: sort description items
 
 B<rc.local> is a command script to which local boot-time actions can
 be added.  It is (nearly) the last thing invoked by B<rc.multi> during
