@@ -46,6 +46,10 @@ B<rc.d/> - startup and shutdown scripts
 
 TODO
 
+B<rc.local> is a command script to which local boot-time actions can
+be added.  It is (nearly) the last thing invoked by B<rc.multi> during
+a normal boot.
+
 B<rc.shutdown> is the command script which shuts down various
 services, and is invoked by L<shutdown(8)> as part of the process of
 shutting down the system.
