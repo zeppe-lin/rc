@@ -46,6 +46,10 @@ B<rc.d/> - startup and shutdown scripts
 
 TODO
 
+B<rc.shutdown> is the command script which shuts down various
+services, and is invoked by L<shutdown(8)> as part of the process of
+shutting down the system.
+
 B<rc.d/> is the directory which contains various L<sh(1p)> scripts,
 one for each service, which are called by B<rc.multi> at startup,
 B<rc.shutdown> at shutdown, and as necessary during system operation
