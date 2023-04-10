@@ -1,0 +1,91 @@
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+B<rc>,
+B<rc.single>,
+B<rc.multi>,
+B<rc.modules>,
+B<rc.local>,
+B<rc.shutdown>,
+B<rc.d/> - startup and shutdown scripts
+
+=head1 SYNOPSIS
+
+=begin man
+
+  init(8)
+  |-- rc
+  |   `-- rc.modules
+  |-- rc.multi
+  |   |-- rc.d/
+  |   `-- rc.local
+  |-- rc.shutdown
+  `-- rc.single
+
+=end man
+
+=begin html
+
+  <pre>
+  init(8)
+  ├── rc
+  │   └── rc.modules
+  ├── rc.multi
+  │   ├── rc.d/
+  │   └── rc.local
+  ├── rc.shutdown
+  └── rc.single
+  <pre>
+
+=end html
+
+=head1 DESCRIPTION
+
+TODO
+
+=head1 FILES
+
+=over 18
+
+=item F</etc/rc>
+
+System boot script.
+
+=item F</etc/rc.single>
+
+Single-User startup script.
+
+=item F</etc/rc.multi>
+
+Multi-User startup script.
+
+=item F</etc/rc.modules>
+
+Module initialization script.
+
+=item F</etc/rc.local>
+
+Local multi-user startup script.
+
+=item F</etc/rc.shutdown>
+
+System shutdown script.
+
+=item F</etc/rc.conf>
+
+System boot configuration file.
+
+=item F</etc/rc.d/>
+
+Directory containing control scripts for each service.
+
+=back
+
+=head1 SEE ALSO
+
+L<rc.conf(5)>, L<init(8)>, L<reboot(8)>, L<shutdown(8)>
+
+=cut
