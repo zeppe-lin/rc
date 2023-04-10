@@ -91,3 +91,6 @@ Directory containing control scripts for each service.
 L<rc.conf(5)>, L<init(8)>, L<reboot(8)>, L<shutdown(8)>
 
 =cut
+
+# vim:sw=2:ts=2:sts=2:et:cc=72:tw=70
+# End of file.
