@@ -3,9 +3,10 @@ TODO rc
 	[ ] switch to https://git.zx2c4.com/seedrng ?
 	or https://lists.crux.nu/pipermail/crux-devel/2019-June/004108.html ?
 
-	[ ] Add rc(8) manual page.
+	[x] Add rc(8) manual page.
 	    May be use https://man.netbsd.org/NetBSD-6.1/rc.8 as
 	    reference?
+	    Done: Thu Apr 13 06:50:06 AM EEST 2023
 
 	[ ] printf() isn't builtin by POSIX (only in dash), and by
 	    default is located in /usr/bin: that may breaks
