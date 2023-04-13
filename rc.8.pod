@@ -19,11 +19,11 @@ B<rc.d/> - startup and shutdown scripts
   init(8)
   |-- rc
   |   `-- rc.modules
+  |-- rc.single
   |-- rc.multi
   |   |-- rc.d/
   |   `-- rc.local
-  |-- rc.shutdown
-  `-- rc.single
+  `-- rc.shutdown
 
 =end man
 
@@ -33,11 +33,11 @@ B<rc.d/> - startup and shutdown scripts
   init(8)
   ├── rc
   │   └── rc.modules
+  ├── rc.single
   ├── rc.multi
   │   ├── rc.d/
   │   └── rc.local
-  ├── rc.shutdown
-  └── rc.single
+  └── rc.shutdown
   </pre>
 
 =end html
