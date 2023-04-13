@@ -8,6 +8,7 @@ OVERVIEW
 
 		* rewritten in POSIX sh(1p)
 		* added rc.conf(5) man page
+		* added rc(8) man page
 		* added mdadm(1) to assemble raid volumes
 		* added cryptmount(8) to parse crypttab(5) files and map
 		  encrypted volumes
