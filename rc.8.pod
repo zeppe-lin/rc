@@ -44,15 +44,6 @@ B<rc.d/> - startup and shutdown scripts
 
 =head1 DESCRIPTION
 
-=begin comment
-
-TODO: rc
-TODO: rc.single
-TODO: rc.multi
-TODO: sort description items
-
-=end comment
-
 B<rc> is the command script which controls the system boot, and is
 invoked by L<init(8)> as part of init process.
 
