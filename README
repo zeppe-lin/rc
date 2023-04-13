@@ -63,10 +63,12 @@ REQUIREMENTS
 INSTALL
 
 	The shell commands "make && make install" should build and install
-	this package.  Next, you need to create/customize /etc/rc.conf and
-	/etc/inittab files.  See rc.conf(5) and inittab(5) respectively,
-	and/or Zeppe-Lin rc package for configuration example
-	(<https://github.com/zeppe-lin/pkgsrc/tree/master/core/rc>).
+	this package.
+
+	Next, you need to create and customize /etc/rc.conf and /etc/inittab
+	files.  See rc.conf(5) and inittab(5) man pages respectively, and/or
+	Zeppe-Lin rc package for configuration example:
+	<https://github.com/zeppe-lin/pkgsrc-core/tree/master/rc>.
 
 LICENSE
 
