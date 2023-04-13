@@ -53,11 +53,20 @@ TODO: sort description items
 
 =end comment
 
-B<rc.modules> is a command script to which local
-kernel module initialization actions can be added.  It is (nearly) the
-last thing invoked by B<rc> during system boot.
+B<rc> is the command script which controls the system boot, and is
+invoked by L<init(8)> as part of init process.
 
-B<rc.local> is a command script to which local boot-time actions can
+B<rc.single> is the command script which controls what to do in
+single-user mode.
+
+B<rc.multi> is the command script which controls what to do in
+multi-user mode.
+
+B<rc.modules> is the command script to which local kernel module
+initialization actions can be added.  It is (nearly) the last thing
+invoked by B<rc> during system boot.
+
+B<rc.local> is the command script to which local boot-time actions can
 be added.  It is (nearly) the last thing invoked by B<rc.multi> during
 a normal boot.
 
