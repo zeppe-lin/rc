@@ -112,7 +112,7 @@ fi
 
 # Screen blanks after 15 minutes idle time.
 if [ -x /usr/bin/setterm ]; then
-	/usr/bin/setterm -blank 15
+	/usr/bin/setterm -blank ${BLANKTIME:-15}
 fi
 
 # Run module initialization script.
