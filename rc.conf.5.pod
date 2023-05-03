@@ -25,6 +25,21 @@ The different configuration variables are:
 
 =over 8
 
+=item B<BLANKTIME>="0-60|force|poke"
+
+Specifies the interval of console inactivity, in minutes, after which
+the screen will be automatically blanked.  The contents of this
+variable will be passed as argument to L<setterm(8)>.
+
+The B<force> argument keeps the screen blank even if a key is pressed.
+
+The B<poke> argument unblanks the screen.
+
+If B<BLANKTIME> is unset, then L<rc(8)> make screen blanks after 15
+minutes of idle time.
+
+Example: C<BLANKTIME=15>
+
 =item B<FONT>="I<STRING>"
 
 Specifies which console font to load at system startup.  The contents
@@ -90,6 +105,7 @@ work.
   # See rc.conf(5) for more information.
   #
 
+  BLANKTIME=15
   FONT=default
   KEYMAP=us
   TIMEZONE=UTC
