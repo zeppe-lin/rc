@@ -11,6 +11,7 @@ port) with the following differences:
 - added mdadm(1) to assemble raid volumes
 - added cryptmount(8) to parse crypttab(5) files and map encrypted
   volumes
+- make screen blanking timeout configurable
 
 See git log for further differences.
 
