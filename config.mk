@@ -1,6 +1,6 @@
 # project metadata
 NAME       = rc
-VERSION    = 2.34.1
+VERSION    = 3.00
 DIST       = ${NAME}-${VERSION}
 
 # paths
