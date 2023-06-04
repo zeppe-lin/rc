@@ -1,7 +1,8 @@
 TODO rc
 
-	[ ] switch to https://git.zx2c4.com/seedrng ?
+	[x] switch to https://git.zx2c4.com/seedrng ?
 	or https://lists.crux.nu/pipermail/crux-devel/2019-June/004108.html ?
+	    Done: Sun Jun  4 12:52:10 PM EEST 2023
 
 	[x] Add rc(8) manual page.
 	    May be use https://man.netbsd.org/NetBSD-6.1/rc.8 as
