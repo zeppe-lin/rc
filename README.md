@@ -12,6 +12,7 @@ port) with the following differences:
 - added cryptmount(8) to parse crypttab(5) files and map encrypted
   volumes
 - make screen blanking timeout configurable
+- get rid of rc.fix file
 
 See git log for further differences.
 
