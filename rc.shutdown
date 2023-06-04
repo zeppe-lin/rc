@@ -30,7 +30,7 @@ fi
 /sbin/killall5 -9
 
 # Save random seed.
-/bin/dd if=/dev/urandom of=/var/lib/urandom/seed count=1 2> /dev/null
+/sbin/seedrng
 
 # Save system clock.
 /sbin/hwclock --systohc

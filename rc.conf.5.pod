@@ -69,6 +69,13 @@ Specifies the hostname.
 
 Example: C<HOSTNAME=pluto>
 
+=item B<SEEDRNG_SKIP_CREDIT>="1|true|yes|y"
+
+Specifies L<seedrng(8)> that seeds never credit the RNG, even if the
+seed file is creditable.  Disabled by default.
+
+Example: C<SEEDRNG_SKIP_CREDIT=false>
+
 =item B<SYSLOG>="I<STRING>"
 
 Specifies the system logging daemon to run at startup.  The daemon
