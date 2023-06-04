@@ -2,7 +2,7 @@
 
 include config.mk
 
-RCS  = rc rc.fix rc.local rc.modules rc.multi rc.shutdown rc.single
+RCS  = rc rc.local rc.modules rc.multi rc.shutdown rc.single
 MAN5 = rc.conf.5
 MAN8 = rc.8
 
