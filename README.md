@@ -30,6 +30,7 @@ REQUIREMENTS
 **Runtime**:
 - POSIX sh(1p) and "mandatory utilities"
 - sysvinit to execute initscripts and manage runlevels
+- seedrng for seeding the kernel random number generator from seed files
 - util-linux and coreutils
 - udevd(8) from eudev/udev/systemd-udevd distribution for dynamic
   device management
