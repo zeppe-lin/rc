@@ -13,6 +13,7 @@ port) with the following differences:
   volumes
 - make screen blanking timeout configurable
 - get rid of rc.fix file
+- use seedrng(8) for seeding the kernel RNG from seed files
 
 See git log for further differences.
 
