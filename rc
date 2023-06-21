@@ -36,6 +36,8 @@ fi
 if [ -f /forcefsck ]; then
 FORCEFSCK="-f"
 fi
+# Intentional.
+# shellcheck disable=2086
 /sbin/fsck $FORCEFSCK -A -T -C -a
 if [ $? -gt 1 ]; then
 	echo
@@ -84,15 +86,15 @@ fi
 # Configure host name.
 if [ "$HOSTNAME" ]; then
 	echo "hostname: $HOSTNAME"
-	/bin/hostname $HOSTNAME
+	/bin/hostname "$HOSTNAME"
 fi
 
 # Load random seed.
 /sbin/seedrng
 
 # Configure system clock.
-if [ "$TIMEZONE" ] && [ -f /usr/share/zoneinfo/$TIMEZONE ]; then
-	/bin/ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
+if [ "$TIMEZONE" ] && [ -f /usr/share/zoneinfo/"$TIMEZONE" ]; then
+	/bin/ln -snf /usr/share/zoneinfo/"$TIMEZONE" /etc/localtime
 fi
 
 # Set the system time from the hardware clock.
@@ -101,18 +103,18 @@ fi
 # Load console font.
 if [ "$FONT" ] && [ -x /usr/bin/setfont ]; then
 	echo "font: $FONT"
-	/usr/bin/setfont $FONT
+	/usr/bin/setfont "$FONT"
 fi
 
 # Load console keymap.
 if [ "$KEYMAP" ] && [ -x /usr/bin/loadkeys ]; then
 	echo "keyboard: $KEYMAP"
-	/usr/bin/loadkeys -q $KEYMAP
+	/usr/bin/loadkeys -q "$KEYMAP"
 fi
 
 # Screen blanks after 15 minutes idle time.
 if [ -x /usr/bin/setterm ]; then
-	/usr/bin/setterm -blank ${BLANKTIME:-15}
+	/usr/bin/setterm -blank "${BLANKTIME:-15}"
 fi
 
 # Run module initialization script.
