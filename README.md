@@ -51,10 +51,6 @@ The following dependencies are optional:
   further arrays and try to assemble them
 - cryptmount(8) from cryptmount distribution to map/unmap encrypted
   volumes; requires cryptsetup(8), blkid(8) and mkswap(8)
-- mkfontdir(1) and mkfontscale(1) from xorg's mkfontscale distribution
-  to create an index of font files for xorg package
-- fc-cache(1) from fontconfig distribution to build font information
-  cache files
 
 
 INSTALL
