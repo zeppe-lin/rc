@@ -1,3 +1,6 @@
+# Makefile.lint is the automated checking of rc project
+# for various programmatic and stylistic errors.
+
 all: deadlinks podchecker shellcheck longlines
 
 deadlinks:
