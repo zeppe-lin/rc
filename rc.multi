@@ -6,11 +6,6 @@
 # Load configuration.
 . /etc/rc.conf
 
-# Run fixes startup file.
-if [ -x /etc/rc.fix ]; then
-	/etc/rc.fix
-fi
-
 # Start services.
 if [ "$SYSLOG" ] || [ "$SERVICES" ]; then
 	printf "starting services:"
