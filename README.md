@@ -8,11 +8,11 @@ port) with the following differences:
 - rewritten in POSIX sh(1p)
 - added rc.conf(5) man page
 - added rc(8) man page
-- added mdadm(1) to assemble raid volumes
-- added cryptmount(8) to parse crypttab(5) files and map encrypted
-  volumes
+- added mdadm(1) support to assemble raid volumes
+- added cryptmount(8) support to parse crypttab(5) files for use by
+  cryptsetup(8)
 - make screen blanking timeout configurable
-- get rid of rc.fix file
+- removed rc.fix file
 - use seedrng(8) for seeding the kernel RNG from seed files
 
 See git log for further differences.
