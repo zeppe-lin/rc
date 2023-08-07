@@ -9,8 +9,7 @@ port) with the following differences:
 - added rc.conf(5) man page
 - added rc(8) man page
 - added mdadm(1) support to assemble raid volumes
-- added cryptmount(8) support to parse crypttab(5) files for use by
-  cryptsetup(8)
+- added cryptmount(8) support to parse crypttab(5) file by cryptsetup(8)
 - make screen blanking timeout configurable
 - removed rc.fix file
 - use seedrng(8) for seeding the kernel RNG from seed files
