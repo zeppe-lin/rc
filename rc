@@ -98,7 +98,7 @@ if [ "$TIMEZONE" ] && [ -f /usr/share/zoneinfo/"$TIMEZONE" ]; then
 fi
 
 # Set the system time from the hardware clock.
-/sbin/hwclock --hctosys
+/sbin/hwclock -s
 
 # Load console font.
 if [ "$FONT" ] && [ -x /usr/bin/setfont ]; then
