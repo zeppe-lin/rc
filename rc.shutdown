@@ -33,7 +33,7 @@ fi
 /sbin/seedrng
 
 # Save system clock.
-/sbin/hwclock --systohc
+/sbin/hwclock -w
 
 # Write to wtmp file before unmounting.
 /sbin/halt -w
