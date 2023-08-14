@@ -46,7 +46,7 @@ if [ $? -gt 1 ]; then
 	echo "*  Please repair manually and reboot. Note that the root   *"
 	echo "*  file system is currently mounted read-only. To remount  *"
 	echo "*  it read-write type: mount -n -o remount,rw /            *"
-	echo "*  When you exit the maintainance shell the system will    *"
+	echo "*  When you exit the maintenance shell the system will     *"
 	echo "*  reboot automatically.                                   *"
 	echo "*                                                          *"
 	echo "************************************************************"
