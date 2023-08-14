@@ -71,14 +71,14 @@ fi
 /sbin/swapon -a
 
 # Clean up misc files.
-: > /run/utmp
+: >/run/utmp
 /bin/rm -rf /forcefsck /fastboot /etc/nologin /etc/shutdownpid
 (cd /var/lock && /usr/bin/find . ! -type d       -delete)
 (cd /tmp      && /usr/bin/find . ! -name .       -delete)
 /bin/mkdir -m 1777 /tmp/.ICE-unix /tmp/.X11-unix
 
 # Set kernel variables.
-/sbin/sysctl -p > /dev/null
+/sbin/sysctl -p >/dev/null
 
 # Update shared library links.
 /sbin/ldconfig
@@ -123,6 +123,6 @@ if [ -x /etc/rc.modules ]; then
 fi
 
 # Save boot messages.
-/bin/dmesg > /var/log/boot
+/bin/dmesg >/var/log/boot
 
 # End of file.
