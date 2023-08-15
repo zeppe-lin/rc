@@ -25,7 +25,10 @@ if [ -x /sbin/mdadm ]; then
 fi
 
 # Parse crypttab and map encrypted volumes.
-if [ -x /sbin/cryptmount ] && [ -x /sbin/cryptsetup.static ]; then
+if [ -f /etc/crypttab    ] \
+&& [ -x /sbin/cryptmount ] \
+&& [ -x /sbin/cryptsetup ] \
+then
 	/sbin/cryptmount -M
 fi
 
