@@ -10,8 +10,8 @@ all: manpages
 manpages: ${MAN5} ${MAN8}
 
 %: %.pod
-	pod2man -r "rc ${VERSION}" -c ' ' -n $(basename $@) \
-		-s $(subst .,,$(suffix $@)) $< > $@
+	pod2man -r "rc ${VERSION}" -c "System Administration" \
+		-n $(basename $@) -s $(subst .,,$(suffix $@)) $< > $@
 
 install: all
 	mkdir -p ${DESTDIR}${SYSCONFDIR}
