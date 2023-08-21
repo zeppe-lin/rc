@@ -107,7 +107,7 @@ starts in the single-user mode, and secondly, it is needed before the
 start of any services, so that the services can log the result if their
 work.
 
-=head1 EXAMPLE
+=head1 EXAMPLES
 
   #
   # /etc/rc.conf: system configuration
