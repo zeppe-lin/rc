@@ -10,7 +10,7 @@ port) with the following differences:
 - seedrng(8) for seeding the kernel RNG from seed files
 - optional mdadm(1) support to assemble raid volumes
 - optional cryptmount(8) support to parse crypttab(5) file by cryptsetup(8)
-- screen blanking timeout configurable
+- configurable timeout for screen blanking
 - remove rc.fix file
 
 See git log for further differences.

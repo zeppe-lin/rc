@@ -37,7 +37,7 @@ if [ -f /forcefsck ]; then
 FORCEFSCK="-f"
 fi
 # Intentional.
-# shellcheck disable=2086
+# shellcheck disable=SC2086
 /sbin/fsck $FORCEFSCK -A -T -C -a
 if [ $? -gt 1 ]; then
 	echo
