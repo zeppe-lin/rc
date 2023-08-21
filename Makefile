@@ -1,13 +1,10 @@
-.POSIX:
-
 include config.mk
 
 RCS  = rc rc.local rc.modules rc.multi rc.shutdown rc.single
 MAN5 = rc.conf.5
 MAN8 = rc.8
 
-all: manpages
-manpages: ${MAN5} ${MAN8}
+all: ${MAN5} ${MAN8}
 
 %: %.pod
 	pod2man -r "rc ${VERSION}" -c "System Administration" \
