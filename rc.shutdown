@@ -30,7 +30,9 @@ fi
 /sbin/killall5 -9
 
 # Save random seed.
-/sbin/seedrng
+if [ -x /sbin/seedrng ]; then
+	/sbin/seedrng
+fi
 
 # Save system clock.
 /sbin/hwclock -w

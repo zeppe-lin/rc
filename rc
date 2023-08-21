@@ -90,7 +90,9 @@ if [ "$HOSTNAME" ]; then
 fi
 
 # Load random seed.
-/sbin/seedrng
+if [ -x /sbin/seedrng ]; then
+	/sbin/seedrng
+fi
 
 # Configure system clock.
 if [ "$TIMEZONE" ] && [ -f /usr/share/zoneinfo/"$TIMEZONE" ]; then
