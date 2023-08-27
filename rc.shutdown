@@ -45,7 +45,7 @@ fi
 
 # Unmount file systems.
 /bin/umount -a -d -r -t nosysfs,noproc,nodevtmpfs
-if [ -f /etc/crypttab ] && [ -x /sbin/cryptmount ] && [ -x /sbin/cryptsetup ]; then
+if [ -f /etc/crypttab ] && [ -x /sbin/cryptmount ]; then
 	# Unmap encrypted volumes.
 	/sbin/cryptmount -U
 fi
