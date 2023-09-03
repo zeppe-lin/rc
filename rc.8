@@ -1,0 +1,92 @@
+.\" rc(8) manual page
+.\" See COPYING and COPYRIGHT files for corresponding information.
+.Dd September 3, 2023
+.Dt RC 8
+.Os rc @VERSION@
+.Sh NAME
+.Nm rc ,
+.Nm rc.single ,
+.Nm rc.multi ,
+.Nm rc.modules ,
+.Nm rc.local ,
+.Nm rc.shutdown ,
+.Nm rc.d/
+.Nd startup and shutdown scripts
+.Sh SYNOPSIS
+.Bd -literal
+init(8)
+|-- rc
+|   `-- rc.modules
+|-- rc.single
+|-- rc.multi
+|   |-- rc.d/
+|   `-- rc.local
+`-- rc.shutdown
+.Ed
+.Sh DESCRIPTION
+.Nm rc
+is the command script which controls the system boot, and is invoked
+by
+.Xr init 8
+as part of init process.
+.Pp
+.Nm rc.single
+is the command script which controls what to do in single-user mode.
+.Pp
+.Nm rc.multi
+is the command script which controls what to do in multi-user mode.
+.Pp
+.Nm rc.modules
+is the command script to which local kernel module initialization
+actions can be added.
+It is (nearly) the last thing invoked by
+.Nm rc
+during system boot.
+.Pp
+.Nm rc.local
+is the command script to which local boot-time actions can be added.
+It is (nearly) the last thing invoked by
+.Nm rc.multi
+during a normal boot.
+.Pp
+.Nm rc.shutdown
+is the command script which shuts down various services, and is
+invoked by
+.Xr shutdown 8
+as part of the process of shutting down the system.
+.Pp
+.Nm rc.d/
+is the directory which contains various
+.Xr sh 1p
+scripts, one for each service, which are called by
+.Nm rc.multi
+at startup,
+.Nm rc.shutdown
+at shutdown, and as necessary during system operation to stop, start,
+restart, reload or otherwise control the service.
+.Sh FILES
+.Bl -tag -width Ds
+.It Pa /etc/rc
+System boot script.
+.It Pa /etc/rc.single
+Single-User startup script.
+.It Pa /etc/rc.multi
+Multi-User startup script.
+.It Pa /etc/rc.modules
+Module initialization script.
+.It Pa /etc/rc.local
+Local multi-user startup script.
+.It Pa /etc/rc.shutdown
+System shutdown script.
+.It Pa /etc/rc.conf
+System boot configuration file.
+.It Pa /etc/rc.d/
+Directory containing control scripts for each service.
+.El
+.Sh SEE ALSO
+.Xr rc.conf 5 ,
+.Xr init 8 ,
+.Xr reboot 8 ,
+.Xr shutdown 8
+.\" vim: cc=72 tw=70
+.\" End of file.
