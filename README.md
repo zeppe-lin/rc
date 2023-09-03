@@ -52,8 +52,8 @@ The following dependencies are optional:
 
 INSTALL
 -------
-The shell commands `make && make install` should build and install
-this package.
+The shell command `make install` should install this package.
+See `config.mk` file for configuration parameters.
 
 Next, you need to create and customize `/etc/rc.conf` and
 `/etc/inittab` files.  See rc.conf(5) and inittab(5) man pages
