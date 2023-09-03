@@ -1,6 +1,5 @@
 # build files and artefacts
-*.8
-*.5
+# none
 
 # vim undo and swap files
 .*.un~
