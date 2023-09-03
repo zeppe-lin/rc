@@ -28,7 +28,6 @@ REQUIREMENTS
 **Runtime**:
 - POSIX sh(1p) and "mandatory utilities"
 - sysvinit to execute initscripts and manage runlevels
-- seedrng for seeding the kernel random number generator from seed files
 - util-linux and coreutils
 - udevd(8) from eudev/udev/systemd-udevd distribution for dynamic
   device management
@@ -42,6 +41,7 @@ The following dependencies are optional:
 
 - setfont(8) and loadkeys(1) from kbd distribution to set system font
   and keyboard
+- seedrng for seeding the kernel random number generator from seed files
 - vgscan(8), vgchange(8) and lvm(8) from lvm distribution to create
   device-mapper device nodes and scan for LVM volume groups
 - mdadm(8) from mdadm distribution to look for devices that could form
