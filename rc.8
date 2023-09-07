@@ -3,6 +3,7 @@
 .Dd September 3, 2023
 .Dt RC 8
 .Os rc @VERSION@
+.\" ==================================================================
 .Sh NAME
 .Nm rc ,
 .Nm rc.single ,
@@ -12,6 +13,7 @@
 .Nm rc.shutdown ,
 .Nm rc.d/
 .Nd startup and shutdown scripts
+.\" ==================================================================
 .Sh SYNOPSIS
 .Bd -literal
 init(8)
@@ -23,6 +25,7 @@ init(8)
 |   `-- rc.local
 `-- rc.shutdown
 .Ed
+.\" ==================================================================
 .Sh DESCRIPTION
 .Nm rc
 is the command script which controls the system boot, and is invoked
@@ -64,6 +67,7 @@ at startup,
 .Nm rc.shutdown
 at shutdown, and as necessary during system operation to stop, start,
 restart, reload or otherwise control the service.
+.\" ==================================================================
 .Sh FILES
 .Bl -tag -width Ds
 .It Pa /etc/rc
@@ -83,6 +87,7 @@ System boot configuration file.
 .It Pa /etc/rc.d/
 Directory containing control scripts for each service.
 .El
+.\" ==================================================================
 .Sh SEE ALSO
 .Xr rc.conf 5 ,
 .Xr init 8 ,
