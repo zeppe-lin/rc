@@ -14,10 +14,10 @@ install:
 	mkdir -p ${DESTDIR}${MANPREFIX}/man8
 	mkdir -p ${DESTDIR}/var/log
 	cp -f ${RC} ${DESTDIR}${SYSCONFDIR}/
-	sed "s/@VERSION@/${VERSION}/" rc.conf.5 > \
-		${DESTDIR}${MANPREFIX}/man5/rc.conf.5
-	sed "s/@VERSION@/${VERSION}/" rc.8 > \
-		${DESTDIR}${MANPREFIX}/man8/rc.8
+	sed "s/@VERSION@/${VERSION}/" rc.conf.5 \
+		> ${DESTDIR}${MANPREFIX}/man5/rc.conf.5
+	sed "s/@VERSION@/${VERSION}/" rc.8 \
+		> ${DESTDIR}${MANPREFIX}/man8/rc.8
 	touch ${DESTDIR}/var/log/boot
 	cd ${DESTDIR}${SYSCONFDIR}     && chmod 0755 ${RC}
 	cd ${DESTDIR}${MANPREFIX}/man5 && chmod 0644 ${MAN5}
