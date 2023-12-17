@@ -9,6 +9,9 @@ TODO rc
       The replacement for "echo -n" also is not POSIX command
       (-n is extension).  Figure out what can be done.
 
+- [ ] Implement support for sysvinit bootlogd(8) to record boot messages?
+      Currently only dmesg(8) dump is saved to /var/log/boot (see rc:123).
+
 
 DONE
 ----
