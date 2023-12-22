@@ -73,8 +73,8 @@ fi
 # Clean up misc files.
 : >/run/utmp
 /bin/rm -rf /forcefsck /fastboot /etc/nologin /etc/shutdownpid
-(cd /var/lock && /usr/bin/find . ! -type d       -delete)
-(cd /tmp      && /usr/bin/find . ! -name .       -delete)
+(cd /var/lock && /usr/bin/find . ! -type d -delete)
+(cd /tmp      && /usr/bin/find . ! -name . -delete)
 /bin/mkdir -m 1777 /tmp/.ICE-unix /tmp/.X11-unix
 
 # Set kernel variables.
