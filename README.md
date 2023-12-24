@@ -6,7 +6,7 @@ with sysvinit on Zeppe-Lin.
 This distribution is a fork of CRUX' init scripts (extracted
 from rc port) with the following differences:
 - POSIX sh(1p) instead of bash(1)
-- rc(8) and rc.conf(5) man page
+- rc(8) and rc.conf(5) manual pages
 - optional seedrng(8) for seeding the kernel RNG from seed files
 - optional mdadm(1) support to assemble raid volumes
 - optional cryptmount(8) support to parse crypttab(5) file by cryptsetup(8)
