@@ -17,8 +17,7 @@ the following differences:
 See git log for further differences.
 
 The original sources can be downloaded from:
-  1. https://crux.nu/ports/crux-3.6/core/rc/
-  2. https://crux.nu/gitweb/?p=ports/core.git;a=tree;f=rc
+  * https://git.crux.nu/ports/core/src/branch/3.6/rc
 
 
 REQUIREMENTS
