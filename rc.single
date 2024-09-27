@@ -13,7 +13,7 @@ if [ "$PREVLEVEL" = "2" ]; then
 			R_SERVICES="$service $R_SERVICES"
 		done
 		for service in $R_SERVICES; do
-			"/etc/rc.d/$service" stop 2>&1 |
+			/etc/rc.d/"$service" stop 2>&1 |
 				/usr/bin/logger -t "$service"
 		done
 	fi
