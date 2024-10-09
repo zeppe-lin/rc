@@ -167,7 +167,7 @@ if [ -x /etc/rc.modules ]; then
 	/etc/rc.modules
 fi
 
-# Save boot messages.
-/bin/dmesg >/var/log/boot
+# Save kernel ring buffer information.
+/bin/dmesg >/var/log/dmesg
 
 # End of file.
