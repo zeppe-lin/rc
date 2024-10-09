@@ -8,9 +8,21 @@ echo "The system is coming up.  Please wait."
 # Load configuration.
 . /etc/rc.conf
 
+# Mount virtual filesystems and /run for udevd runtime data.
+/bin/mountpoint -q /proc || /bin/mount -t proc  none  /proc
+/bin/mountpoint -q /sys  || /bin/mount -t sysfs none  /sys
+
+if ! /bin/mountpoint -q /dev; then
+	/bin/mount -n -t devtmpfs -o exec,nosuid,noatime,mode=0755,nr_blocks=2048,nr_inodes=16384 dev /dev
+else
+	/bin/mount -n -o remount,exec,nosuid,noatime,mode=0755,nr_blocks=2048,nr_inodes=16384 dev /dev
+fi
+
+if ! /bin/mountpoint -q /run; then
+	/bin/mount -n -t tmpfs -i mode=0755,nosuid,nodev,exec tmpfs /run
+fi
+
 # Start udev.
-/bin/mountpoint -q /proc || /bin/mount -t proc  none /proc
-/bin/mountpoint -q /sys  || /bin/mount -t sysfs none /sys
 /sbin/start_udev
 
 # Create device-mapper device nodes and scan for LVM volume groups.
