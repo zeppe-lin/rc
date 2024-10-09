@@ -11,7 +11,7 @@ Next release
 
 No milestone
 ------------
-  - [ ] bootlogd(8) support:
+  - [x] bootlogd(8) support:
         https://github.com/zeppe-lin/rc/issues/7
 
   - [ ] remove /usr/bin/find invocations:
