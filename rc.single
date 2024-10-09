@@ -25,12 +25,32 @@ if [ "$PREVLEVEL" != "N" ]; then
 	/bin/sleep 5
 	/sbin/killall5 -9
 
+	# Mount virtual filesystems and /run for udevd runtime data.
 	/bin/mountpoint -q /proc || /bin/mount -n -t proc  none /proc
 	/bin/mountpoint -q /sys  || /bin/mount -n -t sysfs none /sys
+	if ! /bin/mountpoint -q /dev; then
+		/bin/mount -n -t devtmpfs -o exec,nosuid,noatime,mode=0755,nr_blocks=2048,nr_inodes=16384 dev /dev
+	else
+		/bin/mount -n -o remount,exec,nosuid,noatime,mode=0755,nr_blocks=2048,nr_inodes=16384 dev /dev
+	fi
+	if ! /bin/mountpoint -q /run; then
+		/bin/mount -n -t tmpfs -i mode=0755,nosuid,nodev,exec tmpfs /run
+	fi
 
-	# Start udev.
-	/sbin/start_udev
+	# Copy devices from /lib/udev/devices.
+	/bin/cp -ar /lib/udev/devices/* /dev
 
+	# Launch udev daemon, make sure it's not running first.
+	if ! /bin/pidof -q -s udevd; then
+		/sbin/udevd --daemon
+	fi
+
+	# Coldplug devices and wait for the queue to be processed.
+	/sbin/udevadm trigger --type=subsystems --action=add
+	/sbin/udevadm trigger --type=devices    --action=add
+	/sbin/udevadm settle
+
+	# Start syslog.
 	if [ -f /etc/rc.d/"$SYSLOG" ] && [ -x /etc/rc.d/"$SYSLOG" ]; then
 		/etc/rc.d/"$SYSLOG" start >/dev/null 2>&1
 	fi
