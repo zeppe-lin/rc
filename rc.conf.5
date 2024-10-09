@@ -88,6 +88,14 @@ Disabled by default.
 .Pp
 Example:
 .Dq SEEDRNG_SKIP_CREDIT=false
+.It Sy BOOTLOG Ns = Ns Aq Ar STRING
+Specifies the boot logging daemon to run at startup.
+The daemon specified in this string must have a matching start/stop
+script in
+.Pa /etc/rc.d .
+.Pp
+Example:
+.Dq BOOTLOG=bootlogd
 .It Sy SYSLOG Ns = Ns Aq Ar STRING
 Specifies the system logging daemon to run at startup.
 The daemon specified in this string must have a matching start/stop

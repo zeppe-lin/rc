@@ -37,6 +37,13 @@ if ! /bin/mountpoint -q /run; then
 	/bin/mount -n -t tmpfs -i mode=0755,nosuid,nodev,exec tmpfs /run
 fi
 
+# Record boot messages.
+if [ "$BOOTLOG" ]; then
+	if [ -f /etc/rc.d/"$BOOTLOG" ] && [ -x /etc/rc.d/"$BOOTLOG" ]; then
+		/etc/rc.d/"$BOOTLOG" start
+	fi
+fi
+
 # Copy devices from /lib/udev/devices.
 /bin/cp -ar /lib/udev/devices/* /dev
 
