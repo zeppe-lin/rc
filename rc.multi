@@ -21,7 +21,7 @@ if [ "$SYSLOG" ] || [ "$SERVICES" ]; then
 		/usr/bin/logger -t "$service" < /tmp/rc.$$
 		/bin/rm -f /tmp/rc.$$
 	done
-	echo
+	printf "\n\n"
 fi
 
 # Run local startup script.
