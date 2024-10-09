@@ -22,8 +22,18 @@ if ! /bin/mountpoint -q /run; then
 	/bin/mount -n -t tmpfs -i mode=0755,nosuid,nodev,exec tmpfs /run
 fi
 
-# Start udev.
-/sbin/start_udev
+# Copy devices from /lib/udev/devices.
+/bin/cp -ar /lib/udev/devices/* /dev
+
+# Launch udev daemon, make sure it's not running first.
+if ! /bin/pidof -q -s udevd; then
+	/sbin/udevd --daemon
+fi
+
+# Coldplug devices and wait for the queue to be processed.
+/sbin/udevadm trigger --type=subsystems --action=add
+/sbin/udevadm trigger --type=devices    --action=add
+/sbin/udevadm settle
 
 # Create device-mapper device nodes and scan for LVM volume groups.
 if [ -x /sbin/lvm ]; then
