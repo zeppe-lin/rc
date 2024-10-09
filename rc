@@ -44,18 +44,25 @@ if [ "$BOOTLOG" ]; then
 	fi
 fi
 
-# Copy devices from /lib/udev/devices.
-/bin/cp -ar /lib/udev/devices/* /dev
+# Start device manager if specified, otherwise start udevd(8).
+if [ "$DEVMGR" ]; then
+	if [ -f /etc/rc.d/"$DEVMGR" ] && [ -x /etc/rc.d/"$DEVMGR" ]; then
+		/etc/rc.d/"$DEVMGR" start
+	fi
+else
+	# Copy devices from /lib/udev/devices.
+	/bin/cp -ar /lib/udev/devices/* /dev
 
-# Launch udev daemon, make sure it's not running first.
-if ! /bin/pidof -q -s udevd; then
-	/sbin/udevd --daemon
+	# Launch udev daemon, make sure it's not running first.
+	if ! /bin/pidof -q -s udevd; then
+		/sbin/udevd --daemon
+	fi
+
+	# Coldplug devices and wait for the queue to be processed.
+	/sbin/udevadm trigger --type=subsystems --action=add
+	/sbin/udevadm trigger --type=devices    --action=add
+	/sbin/udevadm settle
 fi
-
-# Coldplug devices and wait for the queue to be processed.
-/sbin/udevadm trigger --type=subsystems --action=add
-/sbin/udevadm trigger --type=devices    --action=add
-/sbin/udevadm settle
 
 # Create device-mapper device nodes and scan for LVM volume groups.
 if [ -x /sbin/lvm ]; then

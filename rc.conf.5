@@ -96,6 +96,15 @@ script in
 .Pp
 Example:
 .Dq BOOTLOG=bootlogd
+.It Sy DEVMGR Ns = Ns Aq Ar STRING
+Specifies the device manager to run at startup instead of default
+.Xr udevd 8 .
+The daemon specified in this string must have a matching start/stop
+script in
+.Pa /etc/rc.d .
+.Pp
+Example:
+.Dq DEVMGR=udevd
 .It Sy SYSLOG Ns = Ns Aq Ar STRING
 Specifies the system logging daemon to run at startup.
 The daemon specified in this string must have a matching start/stop
