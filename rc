@@ -11,11 +11,23 @@ echo "The system is coming up.  Please wait."
 # Mount virtual filesystems and /run for udevd runtime data.
 /bin/mountpoint -q /proc || /bin/mount -t proc  none  /proc
 /bin/mountpoint -q /sys  || /bin/mount -t sysfs none  /sys
+
 if ! /bin/mountpoint -q /dev; then
 	/bin/mount -n -t devtmpfs -o exec,nosuid,noatime,mode=0755,nr_blocks=2048,nr_inodes=16384 dev /dev
 else
 	/bin/mount -n -o remount,exec,nosuid,noatime,mode=0755,nr_blocks=2048,nr_inodes=16384 dev /dev
 fi
+
+if ! /bin/mountpoint -q /dev/pts; then
+	/bin/mkdir -m 0755 /dev/pts
+	/bin/mount -n -t devpts -o noexec,nosuid,gid=tty,mode=0620 devpts /dev/pts
+fi
+
+if ! /bin/mountpoint -q /dev/shm; then
+	/bin/mkdir -m 1777 /dev/shm
+	/bin/mount -n -t tmpfs -o defaults,exec,rw shm /dev/shm
+fi
+
 if ! /bin/mountpoint -q /run; then
 	/bin/mount -n -t tmpfs -i mode=0755,nosuid,nodev,exec tmpfs /run
 fi
