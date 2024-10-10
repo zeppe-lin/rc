@@ -11,8 +11,14 @@ the following differences:
   * optional seedrng(8) for seeding the kernel RNG from seed files
   * optional mdadm(1) support to assemble raid volumes
   * optional cryptmount(8) support to parse crypttab(5) file by cryptsetup(8)
+  * save kernel ring buffer info to /var/log/dmesg instead of /var/log/boot
+  * support specifying boot logging daemon, e.g. bootlogd(8)
+  * support specifying device manager, instead of udevd(8)
   * configurable timeout for screen blanking
   * remove rc.fix file
+  * mount /dev/pts and /dev/shm after /dev
+  * mount all virtual filesystems without writing in /etc/mtab to support
+    read-only /etc
 
 See git log for further differences.
 
