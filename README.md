@@ -2,10 +2,10 @@ OVERVIEW
 ========
 
 This directory contains rc, an init scripts used in conjunction with sysvinit
-on Zeppe-Lin.
+on Zeppe-Lin GNU://Linux distribution.
 
-This distribution is a fork of CRUX' init scripts (extracted from rc port) with
-the following differences:
+This distribution is a fork of CRUX init scripts as of version 2.31 (extracted
+from rc port) with the following differences:
   * POSIX sh(1p) instead of bash(1)
   * rc(8) and rc.conf(5) manual pages
   * optional seedrng(8) for seeding the kernel RNG from seed files
@@ -39,7 +39,7 @@ Runtime
   * sysvinit to execute initscripts and manage runlevels
   * util-linux and coreutils
   * udevd(8) from eudev/udev/systemd-udevd distribution for dynamic device
-    management
+    management OR custom device manager specified via DEVMGR
   * sysctl(8) from procps/procps-ng distribution to set kernel variables
   * ldconfig(8) from glibc distribution to update shared library links
   * hostname(1) from inetutils distribution to configure host name
@@ -47,6 +47,7 @@ Runtime
 
 The following dependencies are optional:
 
+  * bootlogd(8) from sysvinit distribution to support the boot logging
   * setfont(8) and loadkeys(1) from kbd distribution to set system font and
     keyboard
   * seedrng(8) for seeding the kernel random number generator from seed files
@@ -61,14 +62,17 @@ The following dependencies are optional:
 INSTALL
 =======
 
-The shell command `make install` should install this package.  See `config.mk`
-file for configuration parameters.
+The shell command `make install` should install this package.
+
+See `config.mk` file for configuration parameters.
 
 Next, you need to create and customize `/etc/rc.conf` and `/etc/inittab` files.
-See rc.conf(5) and inittab(5) man pages respectively, and/or Zeppe-Lin
-[rc package][1] for configuration example.
+See [rc.conf(5)][1] and [inittab(5)][2] man pages respectively, and/or
+Zeppe-Lin [rc package][1] for configuration example.
 
-[1]: https://github.com/zeppe-lin/pkgsrc-core/tree/master/rc
+[1]: https://zeppe-lin.github.io/rc.conf.5.html
+[2]: https://zeppe-lin.github.io/inittab.5.html
+[3]: https://github.com/zeppe-lin/pkgsrc-core/tree/1.x/rc
 
 
 LICENSE
