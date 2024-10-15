@@ -75,6 +75,14 @@ Zeppe-Lin [rc package][1] for configuration example.
 [3]: https://github.com/zeppe-lin/pkgsrc-core/tree/1.x/rc
 
 
+NOTES FOR SBASE/UBASE USERS
+===========================
+
+* Replace `gid=tty` by `gid=<tty group number>` (e.g. `tty=5`) in `rc` file,
+  where `/dev/pts` is mounting.  The last time I've seen their `mount` doesn't
+  support non-numeric arguments.
+
+
 LICENSE
 =======
 
