@@ -3,6 +3,7 @@
 # /etc/rc.modules: module initialization script
 #
 
+# Probe all modules.
 /sbin/depmod -a
 
 # End of file.
