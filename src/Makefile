@@ -13,6 +13,7 @@ install: all
 	mkdir -p $(DESTDIR)$(SYSCONFDIR)/
 	cp -f $(SRCS) $(DESTDIR)$(SYSCONFDIR)/
 	cd $(DESTDIR)$(SYSCONFDIR) && chmod 0755 $(SRCS)
+	mkdir -p $(DESTDIR)/var/log/
 	touch $(DESTDIR)/var/log/boot
 	chmod 0640 $(DESTDIR)/var/log/boot
 
