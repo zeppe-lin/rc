@@ -5,8 +5,8 @@ TODO rc
 Next release
 ------------
   - [ ] Adapt openbsd's rc.d man page?
-
-  - [ ] Is /usr/bin/logger invocation a problem due to separate /usr problem?
+  - [ ] Is /usr/bin/logger invocation a problem due to separate /usr
+        problem?
 
 
 No milestone
