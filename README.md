@@ -71,9 +71,9 @@ The shell command `make install` should install this package.
 
 See `config.mk` file for configuration parameters.
 
-Next, you need to create and customize `/etc/rc.conf` and
-`/etc/inittab` files.  See [rc.conf(5)][1] and [inittab(5)][2] man
-pages respectively, and/or Zeppe-Lin [rc package][1] for configuration
+Next, you need to create and customize `/etc/rc.conf` and `/etc/inittab` files.
+See [rc.conf(5)][1] and [inittab(5)][2] man pages respectively,
+`extra/rc.conf.sample` and/or Zeppe-Lin [rc package][1] for configuration
 example.
 
 [1]: https://zeppe-lin.github.io/rc.conf.5.html
