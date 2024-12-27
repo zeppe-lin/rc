@@ -1,0 +1,18 @@
+#
+# /etc/rc.conf: system configuration
+#
+# See rc.conf(5) for more information.
+#
+
+BLANKTIME=15
+FONT=default
+KEYMAP=us
+TIMEZONE=UTC
+HOSTNAME=host
+DEVMGR=udevd
+BOOTLOG=bootlogd
+SYSLOG=sysklogd
+SERVICES='lo crond'
+
+# vim: ft=sh nospell
+# End of file.
