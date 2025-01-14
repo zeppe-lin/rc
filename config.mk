@@ -1,6 +1,6 @@
 # project metadata
 NAME       = rc
-VERSION    = 3.0.1
+VERSION    = 4.0
 
 # paths
 SYSCONFDIR = /etc
