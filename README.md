@@ -1,7 +1,7 @@
 OVERVIEW
 ========
 
-This directory contains rc, an init scripts used in conjunction with
+This repository contains rc, an init scripts used in conjunction with
 sysvinit on Zeppe-Lin.
 
 This distribution is a fork of CRUX init scripts as of version 2.31
