@@ -89,6 +89,17 @@ NOTES FOR SBASE/UBASE USERS
   `mount` doesn't support non-numeric arguments.
 
 
+DOCUMENTATION
+=============
+
+Online documentation
+--------------------
+
+Manual pages:
+- [rc.8](https://zeppe-lin.github.io/rc.8.html)
+- [rc.conf.5](https://zeppe-lin.github.io/rc.conf.5.html)
+
+
 LICENSE
 =======
 
