@@ -4,7 +4,10 @@ TODO rc
 
 Next release
 ------------
-  - [ ] Adapt openbsd's rc.d man page?
+  - [ ] Adjust rc.d man page to the openbsd's rc man pages?
+        https://man.openbsd.org/rc.8
+        https://man.openbsd.org/rc.d.8
+
   - [ ] Is /usr/bin/logger invocation a problem due to separate /usr
         problem?
 
