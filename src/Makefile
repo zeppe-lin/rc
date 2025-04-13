@@ -9,7 +9,7 @@ all:
 lint:
 	shellcheck -s sh $(SRCS)
 
-install: all
+install:
 	mkdir -p $(DESTDIR)$(SYSCONFDIR)/
 	cp -f $(SRCS) $(DESTDIR)$(SYSCONFDIR)/
 	cd $(DESTDIR)$(SYSCONFDIR) && chmod 0755 $(SRCS)
