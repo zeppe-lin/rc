@@ -34,6 +34,7 @@ REQUIREMENTS
 Build time
 ----------
   * POSIX sh(1p), make(1p) and "mandatory utilities"
+  * scdoc to build manual pages
 
 Runtime
 -------
@@ -71,14 +72,14 @@ The shell command `make install` should install this package.
 
 See `config.mk` file for configuration parameters.
 
-Next, you need to create and customize `/etc/rc.conf` and `/etc/inittab` files.
-See [rc.conf(5)][1] and [inittab(5)][2] man pages respectively,
-`extra/rc.conf.sample` and/or Zeppe-Lin [rc package][1] for configuration
-example.
+Next, you need to create and customize `/etc/rc.conf` and
+`/etc/inittab` files (see `rc.conf(5)` and `inittab(5)` man pages
+respectively).
 
-[1]: https://zeppe-lin.github.io/rc.conf.5.html
-[2]: https://zeppe-lin.github.io/inittab.5.html
-[3]: https://github.com/zeppe-lin/pkgsrc-core/tree/1.x/rc
+See `extra/rc.conf.sample` and/or Zeppe-Lin [rc package][1] for
+configuration example.
+
+[1]: https://github.com/zeppe-lin/pkgsrc-core/tree/1.x/rc
 
 
 NOTES FOR SBASE/UBASE USERS
@@ -95,9 +96,7 @@ DOCUMENTATION
 Online documentation
 --------------------
 
-Manual pages:
-- [rc.8](https://zeppe-lin.github.io/rc.8.html)
-- [rc.conf.5](https://zeppe-lin.github.io/rc.conf.5.html)
+Refer to the human-readable manual pages located in the `/man` directory.
 
 
 LICENSE
