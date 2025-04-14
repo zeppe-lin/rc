@@ -1,0 +1,90 @@
+RC(8)
+
+# NAME
+
+rc, rc.single, rc.multi, rc.modules, rc.local, rc.shutdown, rc.d/ \
+- startup and shutdown scripts
+
+# SYNOPSIS
+
+```
+init(8)
+|-- rc
+|   `-- rc.modules
+|-- rc.single
+|-- rc.multi
+|   |-- rc.d/
+|   `-- rc.local
+`-- rc.shutdown
+```
+
+# DESCRIPTION
+
+*rc* is the command script which controls the system boot, and is
+invoked by *init*(8) as part of init process.
+
+*rc.single* is the command script which controls what to do in
+single-user mode.
+
+*rc.multi* is the command script which controls what to do in
+multi-user mode.
+
+*rc.modules* is the command script to which local kernel module
+initialization actions can be added.  It is (nearly) the last thing
+invoked by *rc* during system boot.
+
+*rc.local* is the command script to which local boot-time actions can
+be added.  It is (nearly) the last thing invoked by *rc.multi* during
+a normal boot.
+
+*rc.shutdown* is the command script which shuts down various services,
+and is invoked by *shutdown*(8) as part of the process of shutting
+down the system.
+
+*rc.d/* is the directory which contains various *sh*(1p) scripts, one
+for each service, which are called by *rc.multi* at startup,
+*rc.shutdown* at shutdown, and as necessary during system operation to
+stop, start, restart, reload or otherwise control the service.
+
+# FILES
+
+_/etc/rc_
+	System boot script.
+
+_/etc/rc.single_
+	Single-User startup script.
+
+_/etc/rc.multi_
+	Multi-User startup script.
+
+_/etc/rc.modules_
+	Module initialization script.
+
+_/etc/rc.local_
+	Local multi-user startup script.
+
+_/etc/rc.shutdown_
+	System shutdown script.
+
+_/etc/rc.conf_
+	System boot configuration file.
+
+_/etc/rc.d/_
+	Directory containing control scripts for each service.
+
+# SEE ALSO
+
+*rc.conf*(5),
+*init*(8),
+*reboot*(8),
+*shutdown*(8)
+
+# AUTHORS
+
+Originally written by Per Lidén <per@fukt.bth.se> as part of *rc port*
+for CRUX: http://crux.nu.
+
+This implementation was extensively re-worked for Zeppe-Lin by
+Alexandr Savca <alexandr.savca89@gmail.com>.
+
+; vim: ft=scdoc cc=72 tw=70

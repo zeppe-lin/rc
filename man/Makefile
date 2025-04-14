@@ -5,12 +5,12 @@ include ../config.mk
 MAN5 = rc.conf.5
 MAN8 = rc.8
 
-all:
+all: $(MAN5) $(MAN8)
 
-lint:
-	mandoc -Tlint $(MAN5) $(MAN8)
+$(MAN5) $(MAN8):
+	scdoc < $@.scdoc > $@
 
-install:
+install: all
 	mkdir -p $(DESTDIR)$(MANPREFIX)/man5
 	mkdir -p $(DESTDIR)$(MANPREFIX)/man8
 	cp -f $(MAN5) $(DESTDIR)$(MANPREFIX)/man5
@@ -23,5 +23,6 @@ uninstall:
 	cd $(DESTDIR)$(MANPREFIX)/man8 && rm -f $(MAN8)
 
 clean:
+	rm -f $(MAN5) $(MAN8)
 
-.PHONY: all lint install uninstall clean
+.PHONY: all install uninstall clean
