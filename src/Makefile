@@ -6,9 +6,6 @@ SRCS = rc rc.local rc.modules rc.multi rc.shutdown rc.single
 
 all:
 
-lint:
-	shellcheck -s sh $(SRCS)
-
 install:
 	mkdir -p $(DESTDIR)$(SYSCONFDIR)/
 	cp -f $(SRCS) $(DESTDIR)$(SYSCONFDIR)/
@@ -22,4 +19,4 @@ uninstall:
 
 clean:
 
-.PHONY: all lint install uninstall clean
+.PHONY: all install uninstall clean
