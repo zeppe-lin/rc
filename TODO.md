@@ -5,6 +5,9 @@ TODO rc
 Next release
 ------------
 
+- [ ] cryptmount mounts %random volumes before seedrng:
+  https://github.com/zeppe-lin/rc/issues/8
+
 - [ ] Is /usr/bin/logger invocation a problem due to separate /usr
   problem?
 
