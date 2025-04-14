@@ -34,7 +34,7 @@ REQUIREMENTS
 Build time
 ----------
   * POSIX sh(1p), make(1p) and "mandatory utilities"
-  * scdoc to build manual pages
+  * scdoc(1) to build manual pages
 
 Runtime
 -------
@@ -93,10 +93,7 @@ NOTES FOR SBASE/UBASE USERS
 DOCUMENTATION
 =============
 
-Online documentation
---------------------
-
-Refer to the human-readable manual pages located in the `/man` directory.
+See /man directory for manual pages.
 
 
 LICENSE
