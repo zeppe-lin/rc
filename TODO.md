@@ -15,7 +15,7 @@ Next release
 No milestone
 ------------
 
-- [ ] Adjust rc.d man page to the openbsd's rc man pages?
+- [x] Adjust rc.d man page to the openbsd's rc man pages?
   https://man.openbsd.org/rc.8 https://man.openbsd.org/rc.d.8
 
 - [x] Support bootlogd(8): https://github.com/zeppe-lin/rc/issues/7
