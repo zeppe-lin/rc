@@ -21,4 +21,6 @@ Coding style
 Documentation
 -------------
 
-* Check manual pages for misspells: `hunspell -l man/*.scdoc`
+* Check manual pages for misspells:
+
+    hunspell -l man/*.scdoc
