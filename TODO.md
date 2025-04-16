@@ -2,7 +2,7 @@ TODO rc
 =======
 
 
-Next release
+No milestone
 ------------
 
 - [ ] cryptmount mounts %random volumes before seedrng:
@@ -11,16 +11,11 @@ Next release
 - [ ] Is /usr/bin/logger invocation a problem due to separate /usr
   problem?
 
-
-No milestone
-------------
-
 - [ ] Remove /usr/bin/find invocations:
   https://github.com/zeppe-lin/rc/issues/6
 
 - [ ] printf() isn't builtin by POSIX sh(1p):
   https://github.com/zeppe-lin/rc/issues/2
-
 
 Done
 ----
