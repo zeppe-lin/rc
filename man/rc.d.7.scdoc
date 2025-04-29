@@ -12,7 +12,7 @@ rc.d - directory for service control scripts
 
 The _/etc/rc.d/_ directory contains shell scripts that manage services
 on the system.  These scripts are used by the multi-user
-initialization script, *rc-multi*(8), during boot and shutdown to
+initialization script, _/etc/rc-multi_, during boot and shutdown to
 control individual daemons and applications.
 
 Each script in this directory typically corresponds to a specific
