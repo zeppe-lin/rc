@@ -20,31 +20,31 @@ init(8)
 
 # DESCRIPTION
 
-*rc* is the command script which controls the system boot, and is
-invoked by *init*(8) as part of init process.
+The _rc_ system consists of several scripts responsible for booting,
+shutting down, and managing services.  These scripts are
+*not intended to be run manually*.
 
-*rc.single* is the command script which controls what to do in
-single-user mode.
+*rc* controls the system boot, and is invoked by *init*(8) as part of
+init process.
 
-*rc.multi* is the command script which controls what to do in
-multi-user mode.
+*rc.single* handles what to do in single-user mode.
 
-*rc.modules* is the command script to which local kernel module
-initialization actions can be added.  It is (nearly) the last thing
-invoked by *rc* during system boot.
+*rc.multi* handles what to do in multi-user mode.
 
-*rc.local* is the command script to which local boot-time actions can
-be added.  It is (nearly) the last thing invoked by *rc.multi* during
-a normal boot.
+*rc.modules* allows adding kernel module initialization actions.  It
+is (nearly) the last thing invoked by *rc* during system boot.
 
-*rc.shutdown* is the command script which shuts down various services,
-and is invoked by *shutdown*(8) as part of the process of shutting
-down the system.
+*rc.local* allows adding local boot-time actions.  It is (nearly) the
+last thing invoked by *rc.multi* during a normal boot.
 
-*rc.d/* is the directory which contains various *sh*(1p) scripts, one
-for each service, which are called by *rc.multi* at startup,
-*rc.shutdown* at shutdown, and as necessary during system operation to
-stop, start, restart, reload or otherwise control the service.
+*rc.shutdown* shuts down various services, and is invoked by
+*shutdown*(8) as part of the process of shutting down the system.
+
+*rc.d/* is a directory containing various *sh*(1p) scripts for
+controlling services.  These scripts are called by *rc.multi* at
+startup, *rc.shutdown* at shutdown, and as necessary during system
+operation to stop, start, restart, reload or otherwise control the
+service.
 
 # FILES
 
@@ -58,7 +58,7 @@ _/etc/rc.multi_
 	Multi-User startup script.
 
 _/etc/rc.modules_
-	Module initialization script.
+	Kernel module initialization script.
 
 _/etc/rc.local_
 	Local multi-user startup script.
