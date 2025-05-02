@@ -68,26 +68,22 @@ The following dependencies are optional:
 INSTALL
 =======
 
-The shell command `make install` should install this package.
+To install this package, run:
 
-See `config.mk` file for configuration parameters.
+    make install
 
-Next, you need to create and customize `/etc/rc.conf` and
-`/etc/inittab` files (see `rc.conf(5)` and `inittab(5)` man pages
-respectively).
+See config.mk file for configuration parameters.
 
-See `extra/rc.conf.sample` and/or Zeppe-Lin [rc package][1] for
-configuration example.
+Customize `/etc/rc.conf` and `/etc/inittab`
+(see `rc.conf(5)` and `inittab(5)`).
 
-[1]: https://github.com/zeppe-lin/pkgsrc-core/tree/1.x/rc
+For examples, check `extra/rc.conf.sample` or the Zeppe-Lin
+[rc package](https://github.com/zeppe-lin/pkgsrc-core/tree/1.x/rc).
 
-
-NOTES FOR SBASE/UBASE USERS
-===========================
-
-* Replace `gid=tty` by `gid=<tty group number>` (e.g. `tty=5`) in `rc`
-  file, where `/dev/pts` is mounting.  The last time I've seen their
-  `mount` doesn't support non-numeric arguments.
+**Notes for sbase/ubase users**:
+  * Replace `gid=tty` by `gid=<tty group number>` (e.g., `tty=5`) in
+    `rc` file, where `/dev/pts` is mounting.  The last time I've seen
+    their `mount` doesn't support non-numeric arguments.
 
 
 DOCUMENTATION
