@@ -3,7 +3,7 @@
 # /etc/rc.modules: module initialization script
 #
 
-# Probe all modules.
+# Update module dependencies to ensure proper loading order.
 /sbin/depmod -a
 
 # End of file.
