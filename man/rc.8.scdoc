@@ -82,6 +82,7 @@ _/var/log/boot_
 # SEE ALSO
 
 *rc.conf*(5),
+*rc.d*(7),
 *init*(8),
 *reboot*(8),
 *shutdown*(8)
