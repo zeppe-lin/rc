@@ -117,8 +117,9 @@ esac
 
 # SEE ALSO
 
-*rc*(8),
+*sh*(1p),
 *start-stop-daemon*(1),
-*sh*(1p)
+*rc.conf*(5),
+*rc*(8)
 
 ; vim: ft=scdoc cc=72 tw=70
