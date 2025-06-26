@@ -1,26 +1,26 @@
 OVERVIEW
 ========
 
-This repository contains rc, an init scripts used in conjunction with
-sysvinit on Zeppe-Lin.
+This repository contains `rc`, an init scripts used in conjunction
+with `sysvinit` on Zeppe-Lin.
 
 This distribution is a fork of CRUX init scripts as of version 2.31
-(extracted from rc port) with the following differences:
-  * POSIX sh(1p) instead of bash(1)
-  * rc(8), rc.conf(5), and rc.d(7) manual pages
-  * optional seedrng(8) for seeding the kernel RNG from seed files
-  * optional mdadm(1) support to assemble raid volumes
-  * optional cryptmount(8) support to parse crypttab(5) file by
-    cryptsetup(8)
-  * save kernel ring buffer info to /var/log/dmesg instead of
-    /var/log/boot
-  * support specifying boot logging daemon, e.g. bootlogd(8)
-  * support specifying device manager, instead of udevd(8)
+(extracted from `rc` port) with the following differences:
+  * POSIX `sh(1p)` instead of `bash(1)`
+  * `rc(8)`, `rc.conf(5)`, and `rc.d(7)` manual pages
+  * optional `seedrng(8)` for seeding the kernel RNG from seed files
+  * optional `mdadm(1)` support to assemble raid volumes
+  * optional `cryptmount(8)` support to parse `crypttab(5)` file by
+    `cryptsetup(8)`
+  * save kernel ring buffer info to `/var/log/dmesg` instead of
+    `/var/log/boot`
+  * support specifying boot logging daemon, e.g. `bootlogd(8)`
+  * support specifying device manager, instead of `udevd(8)`
   * configurable timeout for screen blanking
-  * remove rc.fix file
-  * mount /dev/pts and /dev/shm after /dev
-  * mount all virtual filesystems without writing in /etc/mtab to
-    support read-only /etc
+  * remove `rc.fix` file
+  * mount `/dev/pts` and `/dev/shm` after `/dev`
+  * mount all virtual filesystems without writing in `/etc/mtab` to
+    support read-only `/etc`
 
 See git log for further differences.
 
@@ -33,36 +33,40 @@ REQUIREMENTS
 
 Build time
 ----------
-  * POSIX sh(1p), make(1p) and "mandatory utilities"
-  * scdoc(1) to build manual pages
+  * POSIX `sh(1p)`, `make(1p)` and "mandatory utilities"
+  * `scdoc(1)` to build manual pages
 
 Runtime
 -------
-  * POSIX sh(1p) and "mandatory utilities"
-  * sysvinit to execute initscripts and manage runlevels
-  * util-linux and coreutils
-  * udevd(8) from eudev/udev/systemd-udevd distribution for dynamic
-    device management OR custom device manager specified via DEVMGR
-  * sysctl(8) from procps/procps-ng distribution to set kernel
+  * POSIX `sh(1p)` and "mandatory utilities"
+  * `sysvinit` to execute initscripts and manage runlevels
+  * `util-linux` and `coreutils`
+  * `udevd(8)` from `eudev/udev/systemd-udevd` distribution for
+    dynamic device management OR custom device manager specified via
+    `DEVMGR`
+  * `sysctl(8)` from `procps/procps-ng` distribution to set kernel
     variables
-  * ldconfig(8) from glibc distribution to update shared library links
-  * hostname(1) from inetutils distribution to configure host name
-  * depmod(8) from kmod distribution to generate modules.dep and map
-    files
+  * `ldconfig(8)` from `glibc` distribution to update shared library
+    links
+  * `hostname(1)` from `inetutils` distribution to configure host name
+  * `depmod(8)` from `kmod` distribution to generate `modules.dep` and
+    map files
 
 The following dependencies are optional:
 
-  * bootlogd(8) from sysvinit distribution to support the boot logging
-  * setfont(8) and loadkeys(1) from kbd distribution to set system
-    font and keyboard
-  * seedrng(8) for seeding the kernel random number generator from
+  * `bootlogd(8)` from `sysvinit` distribution to support the boot
+    logging
+  * `setfont(8)` and `loadkeys(1)` from `kbd` distribution to set
+    system font and keyboard
+  * `seedrng(8)` for seeding the kernel random number generator from
     seed files
-  * vgscan(8), vgchange(8) and lvm(8) from lvm distribution to create
-    device-mapper device nodes and scan for LVM volume groups
-  * mdadm(8) from mdadm distribution to look for devices that could
-    form further arrays and try to assemble them
-  * cryptmount(8) from cryptmount distribution to map/unmap encrypted
-    volumes; requires cryptsetup(8), blkid(8) and mkswap(8)
+  * `vgscan(8)`, `vgchange(8)` and `lvm(8)` from `lvm` distribution to
+    create device-mapper device nodes and scan for LVM volume groups
+  * `mdadm(8)` from `mdadm` distribution to look for devices that
+    could form further arrays and try to assemble them
+  * `cryptmount(8)` from `cryptmount` distribution to map/unmap
+    encrypted volumes; requires `cryptsetup(8)`, `blkid(8)` and
+    `mkswap(8)`
 
 
 INSTALL
@@ -72,7 +76,7 @@ To install this package, run:
 
     make install
 
-See config.mk file for configuration parameters.
+See `config.mk` file for configuration parameters.
 
 Customize `/etc/rc.conf` and `/etc/inittab`
 (see `rc.conf(5)` and `inittab(5)`).
@@ -89,13 +93,13 @@ For examples, check `extra/rc.conf.sample` or the Zeppe-Lin
 DOCUMENTATION
 =============
 
-See /man directory for manual pages.
+See `/man` directory for manual pages.
 
 
 LICENSE
 =======
 
-rc is licensed through the GNU General Public License v3 or later
+`rc` is licensed through the GNU General Public License v3 or later
 <https://gnu.org./licenses/gpl.html>.
 Read the COPYING file for copying conditions.
 Read the COPYRIGHT file for copyright notices.
