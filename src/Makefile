@@ -2,20 +2,20 @@
 
 include ../config.mk
 
-SRCS = rc rc.local rc.modules rc.multi rc.shutdown rc.single
+RCS = rc rc.local rc.modules rc.multi rc.shutdown rc.single
 
 all:
 
 install:
 	mkdir -p $(DESTDIR)$(SYSCONFDIR)/
-	cp -f $(SRCS) $(DESTDIR)$(SYSCONFDIR)/
-	cd $(DESTDIR)$(SYSCONFDIR) && chmod 0755 $(SRCS)
+	cp -f $(RCS) $(DESTDIR)$(SYSCONFDIR)/
+	cd $(DESTDIR)$(SYSCONFDIR) && chmod 0755 $(RCS)
 	mkdir -p $(DESTDIR)/var/log/
 	touch $(DESTDIR)/var/log/boot
 	chmod 0640 $(DESTDIR)/var/log/boot
 
 uninstall:
-	cd $(DESTDIR)$(SYSCONFDIR) && rm -f $(SRCS)
+	cd $(DESTDIR)$(SYSCONFDIR) && rm -f $(RCS)
 
 clean:
 
