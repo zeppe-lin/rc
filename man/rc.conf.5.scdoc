@@ -112,6 +112,9 @@ features.
 	When *shutting down* or going into *single-user mode*, these
 	scripts are run in the _reverse order_ with the command "stop".
 
+	For details on the structure and conventions for these service
+	scripts, see the *rc.d*(7) manual page.
+
 	Example: SERVICES="lo crond net sshd"
 
 ## Why the Separation?
@@ -158,6 +161,7 @@ SERVICES="lo crond net"
 
 # SEE ALSO
 
+*rc.d*(7),
 *rc*(8)
 
 ; vim: ft=scdoc cc=72 tw=70
