@@ -2,7 +2,7 @@ HACKING
 =======
 
 This file attempts to describe the rules and notes to use when hacking
-the rc sources cloned from the Zeppe-Lin's source code repository.
+the `rc` sources cloned from the Zeppe-Lin's source code repository.
 
 
 Coding style
@@ -14,8 +14,8 @@ Coding style
   strict 79-column limit for formatted output messages, such as usage,
   help, etc.
 
-* Do not call binaries outside /bin and /sbin.  rc must run correctly
-  without /usr partition mounted.
+* Do not call binaries outside `/bin` and `/sbin`.  `rc` must run correctly
+  without `/usr` partition mounted.
 
 
 Documentation
