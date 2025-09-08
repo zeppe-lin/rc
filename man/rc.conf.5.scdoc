@@ -10,136 +10,79 @@ rc.conf - system configuration file
 
 # DESCRIPTION
 
-This manual page describes the format of the _/etc/rc.conf_ file.
-This file is a simple POSIX *sh*(1p) script that defines font,
-timezone, hostname and services which are used on system
-initialization and shutdown.
+_/etc/rc.conf_ is a POSIX *sh*(1p) script defining system settings,
+console, and services.  Use 'variable=value' assignments.  Lines
+starting with '*#*' are comments.
 
-The file uses 'variable=value' assignments, with comments prefixed by
-a hash ('*#*').
-
-The different configuration variables are:
+The configuration variables are:
 
 *BLANKTIME*=<_0-60_ | _force_ | _poke_>
-	Specifies the interval of console inactivity, in minutes,
-	after which the screen will be automatically blanked.  The
-	contents of this variable will be passed as argument to
-	*setterm*(1).
+	Console inactivity timeout in minutes for screen blanking
+	(passed to *setterm*(1)).
 
-	The _force_ argument keeps the screen blank even if a key is
-	pressed.
-
-	The _poke_ argument unblanks the screen.
-
-	If *BLANKTIME* is unset, then *rc*(8) make screen blanks after
-	15 minutes of idle time.
-
-	Example: BLANKTIME="15"
+	Default: 15. _force_ keeps screen blank.  _poke_ unblanks it.
 
 *FONT*=<STRING>
-	Specifies which console font to load at system startup.  The
-	contents of this variable will be passed as argument to
-	*setfont*(8).  The available fonts are located in
-	_/usr/share/kbd/consolefonts/_.
+	Console font (passed to *setfont*(8)).
+	Fonts are located in _/usr/share/kbd/consolefonts/_.
 
-	Example: FONT="default"
+	Default: none.
 
 *KEYMAP*=<STRING>
-	Specifies which console keyboard map to load at system
-	startup.  The contents of this variable will be passed as
-	argument to *loadkeys*(1).  The available keyboard maps are
-	located in _/usr/share/kbd/keymaps/_.
+	Console keyboard map (passed to *loadkeys*(1)).
+	Keymaps are located in _/usr/share/kbd/keymaps/_.
 
-	Example: KEYMAP="us"
+	Default: none.
 
 *TIMEZONE*=<STRING>
-	Specifies the timezone used by the system.  The available zone
-	description files are located in _/usr/share/zoneinfo/_.
+	System timezone.
+	Zone files are in _/usr/share/zoneinfo/_.
 
-	Example: TIMEZONE="Europe/Stockholm"
+	Default: none.
 
 *HOSTNAME*=<STRING>
-	Specifies the hostname.
+	System hostname.
 
-	Example: HOSTNAME="pluto"
+	Default: none.
 
 *SEEDRNG_SKIP_CREDIT*=<1 | true | yes | y>
-	A setting for *seedrng*(8) that tells it to always generate
-	new random numbers, even if it thinks it has enough.  Usually
-	disabled.  See *seedrng*(8)` for more info.
+	For seedrng(8).
+	Forces new seed generation even if RNG is initialized.
 
-	Example: SEEDRNG_SKIP_CREDIT="false"
-
-## Special Startup Programs (Managed Separately)
-
-These programs are started very early in the boot process because they
-are essential for the system to function, even in a minimal state.
+	Default: disabled.
 
 *BOOTLOG*=<STRING>
-	Specifies the boot logging program to run at startup.  This
-	program needs a corresponding start/stop script in
-	_/etc/rc.d/_.
+	Boot logging program.
+	Requires a corresponding start/stop script in _/etc/rc.d/_.
 
-	Example: BOOTLOG="bootlogd"
+	Default: none.
 
 *DEVMGR*=<STRING>
-	Specifies the device manager to run at startup instead of the
-	default *udevd*(8).  This program also needs a start/stop
-	script in _/etc/rc.d/_.
+	Device manager.
+	Requires a corresponding start/stop script in _/etc/rc.d/_.
 
-	Example: DEVMGR="udevd"
+	Default: none.
 
 *SYSLOG*=<STRING>
-	Specifies the system logging program to run at startup.  This
-	program also needs a start/stop script in _/etc/rc.d/_.
+	System logging program.
+	Requires a corresponding start/stop script in _/etc/rc.d/_.
 
-	Example: SYSLOG="sysklogd"
-
-## Regular Services (Started Later)
-
-These are the general programs and services that run your system's
-features.
+	Default: none.
 
 *SERVICES*="<STRING ...>"
-	Lists the services to start when the system is ready for
-	regular use (*multi-user mode*).  These services should be
-	separated by spaces and must have a start/stop script in
-	_/etc/rc.d/_.
-
-	When entering *multi-user mode*, these scripts are run in the
-	order you list them with the command "start".
-
-	When *shutting down* or going into *single-user mode*, these
-	scripts are run in the _reverse order_ with the command "stop".
+	Space-separated list of services to start in multi-user mode.
+	Each service must have a script in _/etc/rc.d/_.
+	Services are started in the listed order and stopped in
+	reverse order.
 
 	For details on the structure and conventions for these service
 	scripts, see the *rc.d*(7) manual page.
 
-	Example: SERVICES="lo crond net sshd"
-
-## Why the Separation?
-
-You might notice that *SYSLOG*, *DEVMGR*, and *BOOTLOG* are defined
-separately from the *SERVICES* variable.  Here's why:
-
-	*Early Needs:* These programs are needed very early in the
-	boot process, even before the system is fully ready for normal
-	services.  For instance, the system logger (*SYSLOG*) needs to
-	be running so that other programs can record their startup
-	messages.
-
-	*Single-User Mode:* These essential programs also need to run
-	even when the system is in a minimal single-user mode for
-	maintenance.
-
-# FILES
-
-_/etc/rc.conf_
-	System configuration file.
+	Default: none.
 
 # EXAMPLES
 
-A sample _/etc/rc.conf_ file:
+Minimal configuration _/etc/rc.conf_:
 
 ```
 #
@@ -153,11 +96,18 @@ FONT=default
 KEYMAP=us
 TIMEZONE=UTC
 HOSTNAME=host
+BOOTLOG=bootlogd
+DEVMGR=udevd
 SYSLOG=sysklogd
 SERVICES="lo crond net"
 
 # End of file.
 ```
+
+# FILES
+
+_/etc/rc.conf_
+	System configuration file.
 
 # SEE ALSO
 

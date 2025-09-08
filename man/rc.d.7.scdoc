@@ -6,66 +6,54 @@ rc.d - directory for service control scripts
 
 # SYNOPSIS
 
-/etc/rc.d/\*
+*/etc/rc.d/\**
 
 # DESCRIPTION
 
-The _/etc/rc.d/_ directory contains shell scripts that manage services
-on the system.  These scripts are used by the multi-user
-initialization script, _/etc/rc-multi_, during boot and shutdown to
-control individual daemons and applications.
+_/etc/rc.d_ directory contains shell scripts to start, stop, restart
+or check system services.
 
 Each script in this directory typically corresponds to a specific
 service and is responsible for starting, stopping, and potentially
 performing other actions on that service.
 
-## Script Naming
+Scripts are usually named after the service they control (e.g., sshd,
+dhcpcd, dbus).
 
-Scripts in _/etc/rc.d/_ are usually named after the service they
-control (e.g., sshd, dhcpcd, dbus).
-
-## Common Actions
-
-These scripts are designed to be called with a single argument
-specifying the action to perform.  The most common actions are:
+Each script is called with a single argument specifying the action:
 
 *start*
-	Initiates the service.
+	Start the service.
 *stop*
-	Terminates the service.
+	Stop the service.
 *restart*
-	Stops and then starts the service.
+	Stop and then start the service.
 *status*
-	Checks if the service is running.
+	Report whether the service is running.
 
 Other common, but optional, actions include:
 
 *reload*
-	Tells the service to reload its configuration.
+	Reload the service configuration.
 *force-reload*
-	Forces a configuration reload.
+	Force a configuration reload.
 *configtest*
-	Checks the service's configuration for errors.
+	Check the service configuration for errors.
 
-## Script Structure
+Scripts are typically written in *sh*(1p) and use a *case* statement
+to handle actions.  They often use *start-stop-daemon*(8) to manage
+processes.
 
-These scripts are typically written in *sh*(1p) and use a *case*
-statement to handle the different actions passed as arguments.  They
-often utilize utilities like *start-stop-daemon*(8) to manage the
-service process.
-
-A common pattern involves defining variables at the beginning of the
-script for:
+Common variables defined in service scripts include:
 
 *PROG*
-	The path to the service's executable.
+	Path to the service executable.
 *PID*
-	The path to the service's process ID (PID) file (usually in
-	_/run/_ or _/var/run/_).
+	Path to the PID file, usually in _/run_ or _/var/run_.
 *SSD*
-	The path to the *start-stop-daemon*(8) utility (for brevity).
+	Path to *start-stop-daemon*(8) utility (for brevity).
 *OPTS*
-	Any specific command-line options to be passed to the service.
+	Command-line options for the service.
 
 # FILES
 
@@ -74,8 +62,7 @@ _/etc/rc.d/_
 
 # EXAMPLES
 
-Here is an example of a typical service control script located at
-_/etc/rc.d/daemon_:
+Example of a simple service script:
 
 ```
 #!/bin/sh
