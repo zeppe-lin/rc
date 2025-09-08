@@ -9,8 +9,8 @@ FONT=default
 KEYMAP=us
 TIMEZONE=UTC
 HOSTNAME=host
-DEVMGR=udevd
 BOOTLOG=bootlogd
+DEVMGR=udevd
 SYSLOG=sysklogd
 SERVICES='lo crond'
 
