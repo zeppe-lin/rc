@@ -49,8 +49,8 @@ The configuration variables are:
 	Default: none.
 
 *SEEDRNG_SKIP_CREDIT*=<1 | true | yes | y>
-	For seedrng(8).
-	Forces new seed generation even if RNG is initialized.
+	Forces new seed generation even if RNG is initialized
+	(used by *seedrng*(8)).
 
 	Default: disabled.
 
