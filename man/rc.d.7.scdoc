@@ -41,8 +41,8 @@ Other common, but optional, actions include:
 	Check the service configuration for errors.
 
 Scripts are typically written in *sh*(1p) and use a *case* statement
-to handle actions.  They often use *start-stop-daemon*(8) to manage
-processes.
+to handle actions.
+They often use *start-stop-daemon*(8) to manage processes.
 
 Common variables defined in service scripts include:
 

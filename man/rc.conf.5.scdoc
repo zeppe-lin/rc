@@ -11,8 +11,9 @@ rc.conf - system configuration file
 # DESCRIPTION
 
 _/etc/rc.conf_ is a POSIX *sh*(1p) script defining system settings,
-console, and services.  Use 'variable=value' assignments.  Lines
-starting with '*#*' are comments.
+console, and services.
+Use 'variable=value' assignments.
+Lines starting with '*#*' are comments.
 
 The configuration variables are:
 
@@ -20,7 +21,9 @@ The configuration variables are:
 	Console inactivity timeout in minutes for screen blanking
 	(passed to *setterm*(1)).
 
-	Default: 15. _force_ keeps screen blank.  _poke_ unblanks it.
+	Default: 15.
+	_force_ keeps screen blank.
+	_poke_ unblanks it.
 
 *FONT*=<STRING>
 	Console font (passed to *setfont*(8)).
