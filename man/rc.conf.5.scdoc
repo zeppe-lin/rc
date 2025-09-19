@@ -2,7 +2,7 @@ RC.CONF(5)
 
 # NAME
 
-rc.conf - system boot configuration file
+rc.conf - system startup configuration file
 
 # SYNOPSIS
 
@@ -10,78 +10,89 @@ rc.conf - system boot configuration file
 
 # DESCRIPTION
 
-The _/etc/rc.conf_ file is a POSIX *sh*(1p) script defining system
-settings, console parameters, and enabled services.
-Configuration is expressed as 'variable=value'.
+The _/etc/rc.conf_ file is a POSIX *sh*(1p) script sourced by system
+startup scripts to configure the hostname, timezone, console settings,
+and which services to start.
+
+Settings use the form 'name=value'.
 Lines beginning with '*#*' are comments.
 
-The configuration variables are:
+The following variables are recognized:
 
 *BLANKTIME*=<_0-60_ | _force_ | _poke_>
-	Console inactivity timeout in minutes for screen blanking
-	(passed to *setterm*(1)).
-
-	Default: 15.
+	Console inactivity timeout in minutes for screen blanking,
+	passed to *setterm*(1).
 	_force_ keeps screen blank.
 	_poke_ unblanks it.
 
+	Default: 15.
+
 *FONT*=<STRING>
-	Console font (passed to *setfont*(8)).
+	Console font, passed to *setfont*(8).
 	Fonts are located in _/usr/share/kbd/consolefonts/_.
 
-	Default: none.
+	Default: unset.
 
 *KEYMAP*=<STRING>
-	Console keyboard map (passed to *loadkeys*(1)).
+	Console keyboard map, passed to *loadkeys*(1).
 	Keymaps are located in _/usr/share/kbd/keymaps/_.
 
-	Default: none.
+	Default: unset.
 
 *TIMEZONE*=<STRING>
-	System timezone.
-	Zone files are in _/usr/share/zoneinfo/_.
+	System timezone, passed to *ln*(1) to link _/etc/localtime_ to
+	a zone file in _/usr/share/zoneinfo/_.
 
-	Default: none.
+	Default: unset.
 
 *HOSTNAME*=<STRING>
-	System hostname.
+	System hostname, passed to *hostname*(1).
 
-	Default: none.
+	Default: unset.
 
 *SEEDRNG_SKIP_CREDIT*=<1 | true | yes | y>
-	Forces new seed generation even if RNG is initialized
-	(used by *seedrng*(8)).
+	Force new seed generation even if RNG is initialized, used by
+	*seedrng*(8).
 
 	Default: disabled.
 
 *BOOTLOG*=<STRING>
-	Boot logging program.
+	Boot logging daemon.
 	Requires a corresponding start/stop script in _/etc/rc.d/_.
 
-	Default: none.
+	Default: unset.
 
 *DEVMGR*=<STRING>
 	Device manager.
 	Requires a corresponding start/stop script in _/etc/rc.d/_.
 
-	Default: none.
+	Default: unset.
 
 *SYSLOG*=<STRING>
-	System logging program.
+	System logging daemon.
 	Requires a corresponding start/stop script in _/etc/rc.d/_.
 
-	Default: none.
+	Default: unset.
 
 *SERVICES*="<STRING ...>"
 	Space-separated list of services to start in multi-user mode.
-	Each service must have a script in _/etc/rc.d/_.
-	Services are started in the listed order and stopped in
-	reverse order.
+	Each listed service must have a corresponding script in
+	_/etc/rc.d/_.
 
-	For details on the structure and conventions for these service
-	scripts, see the *rc.d*(7) manual page.
+	Services are started in the listed order during multi-user
+	startup by *rc.multi*(8), and are stopped in reverse order
+	during shutdown by *rc.shutdown*(8).
 
-	Default: none.
+	For details on service script structure and conventions, see
+	*rc.d*(7).
+
+	Default: unset.
+
+# FILES
+
+_/etc/rc.conf_
+	Shell script sourced by *rc*(8) scripts to configure system
+	behaviour.
 
 # EXAMPLES
 
@@ -90,8 +101,6 @@ Minimal _/etc/rc.conf_:
 ```
 #
 # /etc/rc.conf: system configuration
-#
-# See rc.conf(5) for more information.
 #
 
 BLANKTIME=15
@@ -106,11 +115,6 @@ SERVICES="lo crond net"
 
 # End of file.
 ```
-
-# FILES
-
-_/etc/rc.conf_
-	System configuration file.
 
 # SEE ALSO
 
