@@ -38,20 +38,18 @@ if ! /bin/mountpoint -q /run; then
 fi
 
 # Record boot messages.
-if [ "$BOOTLOG" ]; then
-	if [ -f /etc/rc.d/"$BOOTLOG" ] && [ -x /etc/rc.d/"$BOOTLOG" ]; then
-		/etc/rc.d/"$BOOTLOG" start
-	fi
+if [ "$BOOTLOG" ] && [ -x /etc/rc.d/"$BOOTLOG" ]; then
+	/etc/rc.d/"$BOOTLOG" start
 fi
 
 # Start device manager if specified, otherwise start udevd(8).
-if [ "$DEVMGR" ]; then
-	if [ -f /etc/rc.d/"$DEVMGR" ] && [ -x /etc/rc.d/"$DEVMGR" ]; then
-		/etc/rc.d/"$DEVMGR" start
-	fi
+if [ "$DEVMGR" ] && [ -x /etc/rc.d/"$DEVMGR" ]; then
+	/etc/rc.d/"$DEVMGR" start
 else
 	# Copy devices from /lib/udev/devices.
-	/bin/cp -ar /lib/udev/devices/* /dev
+	if [ -d /lib/udev/devices ]; then
+		/bin/cp -ar /lib/udev/devices/* /dev
+	fi
 
 	# Launch udev daemon, make sure it's not running first.
 	if ! /bin/pidof -q -s udevd; then
@@ -114,7 +112,7 @@ fi
 /bin/mount -o remount,rw /
 /bin/mount -a -O no_netdev
 
-# Create user dir in /run.
+# Create user runtime directory.
 /bin/mkdir -m 0755 /run/user
 
 # Activate swap.
@@ -133,7 +131,7 @@ fi
 # Update shared library links.
 /sbin/ldconfig
 
-# Configure host name.
+# Set system hostname.
 if [ "$HOSTNAME" ]; then
 	echo "hostname: $HOSTNAME"
 	/bin/hostname "$HOSTNAME"
@@ -144,12 +142,12 @@ if [ -x /sbin/seedrng ]; then
 	/sbin/seedrng
 fi
 
-# Configure system clock.
+# Set system timezone.
 if [ "$TIMEZONE" ] && [ -f /usr/share/zoneinfo/"$TIMEZONE" ]; then
 	/bin/ln -snf /usr/share/zoneinfo/"$TIMEZONE" /etc/localtime
 fi
 
-# Set the system time from the hardware clock.
+# Set system time from hardware clock.
 /sbin/hwclock -s
 
 # Load console font.
@@ -164,7 +162,7 @@ if [ "$KEYMAP" ] && [ -x /usr/bin/loadkeys ]; then
 	/usr/bin/loadkeys -q "$KEYMAP"
 fi
 
-# Screen blanks after 15 minutes idle time.
+# Set screen blank timeout.
 if [ -x /usr/bin/setterm ]; then
 	/usr/bin/setterm -blank "${BLANKTIME:-15}"
 fi
@@ -174,7 +172,7 @@ if [ -x /etc/rc.modules ]; then
 	/etc/rc.modules
 fi
 
-# Save kernel ring buffer information.
+# Save kernel ring buffer.
 /bin/dmesg >/var/log/dmesg
 
 # End of file.

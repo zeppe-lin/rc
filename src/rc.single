@@ -6,19 +6,18 @@
 # Load configuration.
 . /etc/rc.conf
 
-if [ "$PREVLEVEL" = "2" ]; then
-	# Shutdown services.
-	if [ -n "$SERVICES" ]; then
-		for service in   $SERVICES; do
-			R_SERVICES="$service $R_SERVICES"
-		done
-		for service in $R_SERVICES; do
-			/etc/rc.d/"$service" stop 2>&1 |
-				/usr/bin/logger -t "$service"
-		done
-	fi
+# Stop services if transitioning from multi-user mode.
+if [ "$PREVLEVEL" = "2" ] && [ -n "$SERVICES" ]; then
+	for service in   $SERVICES; do
+		R_SERVICES="$service $R_SERVICES"
+	done
+	for service in $R_SERVICES; do
+		/etc/rc.d/"$service" stop 2>&1 |
+			/usr/bin/logger -t "$service"
+	done
 fi
 
+# Prepare environment if transitioning from boot or multi-user mode.
 if [ "$PREVLEVEL" != "N" ]; then
 	# Terminate all processes.
 	/sbin/killall5 -15
@@ -55,10 +54,8 @@ if [ "$PREVLEVEL" != "N" ]; then
 	fi
 
 	# Start device manager if specified, otherwise start udevd(8).
-	if [ "$DEVMGR" ]; then
-		if [ -f /etc/rc.d/"$DEVMGR" ] && [ -x /etc/rc.d/"$DEVMGR" ]; then
-			/etc/rc.d/"$DEVMGR" start
-		fi
+	if [ "$DEVMGR" ] && [ -x /etc/rc.d/"$DEVMGR" ]; then
+		/etc/rc.d/"$DEVMGR" start
 	else
 		# Copy devices from /lib/udev/devices.
 		/bin/cp -ar /lib/udev/devices/* /dev
@@ -74,14 +71,14 @@ if [ "$PREVLEVEL" != "N" ]; then
 		/sbin/udevadm settle
 	fi
 
-	# Start syslog.
-	if [ -f /etc/rc.d/"$SYSLOG" ] && [ -x /etc/rc.d/"$SYSLOG" ]; then
+	# Start system logging daemon.
+	if [ "$SYSLOG" ] && [ -x /etc/rc.d/"$SYSLOG" ]; then
 		/etc/rc.d/"$SYSLOG" start >/dev/null 2>&1
 	fi
 fi
 
+# Enter single-user mode.
 if [ "$RUNLEVEL" = "1" ]; then
-	# Enter single-user mode.
 	exec /sbin/init -t1 S
 fi
 

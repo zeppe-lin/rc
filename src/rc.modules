@@ -3,7 +3,15 @@
 # /etc/rc.modules: module initialization script
 #
 
-# Update module dependencies to ensure proper loading order.
-/sbin/depmod -a
+# Refresh module list for correct loading order.
+if [ -x /sbin/depmod ]; then
+	/sbin/depmod -a
+fi
+
+# Add custom module loading commands below.
+# Example:
+#   /sbin/modprobe loop
+#   /sbin/modprobe snd_hda_intel
+
 
 # End of file.
