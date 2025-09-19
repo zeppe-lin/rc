@@ -51,12 +51,6 @@ The following variables are recognized:
 
 	Default: unset.
 
-*SEEDRNG_SKIP_CREDIT*=<1 | true | yes | y>
-	Force new seed generation even if RNG is initialized, used by
-	*seedrng*(8).
-
-	Default: disabled.
-
 *BOOTLOG*=<STRING>
 	Boot logging daemon.
 	Requires a corresponding service script in _/etc/rc.d/_.
