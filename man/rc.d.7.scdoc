@@ -13,7 +13,7 @@ rc.d - service control script directory
 The _/etc/rc.d_ directory contains shell scripts that start, stop, and
 manage system services.
 The *SERVICES* variable in *rc.conf*(5) specifies which of these
-scripts are run automatically at boot; others may be invoked manually
+scripts are run automatically at boot; others may be run manually
 by the administrator:
 
 ```

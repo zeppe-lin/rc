@@ -10,9 +10,10 @@ rc.conf - system startup configuration file
 
 # DESCRIPTION
 
-The _/etc/rc.conf_ file is a POSIX *sh*(1p) script sourced by system
-startup scripts to configure the hostname, timezone, console settings,
-and which services to start.
+The _/etc/rc.conf_ file is a POSIX *sh*(1p) script read by the system
+startup scripts.
+It defines system settings such as hostname, console parameters, and
+the list of services to start.
 
 Settings use the form 'name=value'.
 Lines beginning with '*#*' are comments.
@@ -58,30 +59,27 @@ The following variables are recognized:
 
 *BOOTLOG*=<STRING>
 	Boot logging daemon.
-	Requires a corresponding start/stop script in _/etc/rc.d/_.
+	Requires a corresponding service script in _/etc/rc.d/_.
 
 	Default: unset.
 
 *DEVMGR*=<STRING>
 	Device manager.
-	Requires a corresponding start/stop script in _/etc/rc.d/_.
+	Requires a corresponding service script in _/etc/rc.d/_.
 
 	Default: unset.
 
 *SYSLOG*=<STRING>
 	System logging daemon.
-	Requires a corresponding start/stop script in _/etc/rc.d/_.
+	Requires a corresponding service script in _/etc/rc.d/_.
 
 	Default: unset.
 
 *SERVICES*="<STRING ...>"
-	Space-separated list of services to start in multi-user mode.
-	Each listed service must have a corresponding script in
-	_/etc/rc.d/_.
-
-	Services are started in the listed order during multi-user
-	startup by *rc.multi*(8), and are stopped in reverse order
-	during shutdown by *rc.shutdown*(8).
+	Space-separated list of services to start.
+	Each service requires a corresponding script in _/etc/rc.d_.
+	Services are started in the order listed and stopped in
+	reverse order at shutdown.
 
 	For details on service script structure and conventions, see
 	*rc.d*(7).
@@ -91,8 +89,7 @@ The following variables are recognized:
 # FILES
 
 _/etc/rc.conf_
-	Shell script sourced by *rc*(8) scripts to configure system
-	behaviour.
+	System startup configuration file.
 
 # EXAMPLES
 

@@ -2,10 +2,12 @@ RC(8)
 
 # NAME
 
-rc, rc.single, rc.multi, rc.modules, rc.local, rc.shutdown, rc.d/ \
+rc, rc.single, rc.multi, rc.modules, rc.local, rc.shutdown, rc.d \
 - system startup and shutdown scripts
 
 # SYNOPSIS
+
+System boot sequence as invoked by *init*(8):
 
 ```
 init(8)
@@ -20,8 +22,8 @@ init(8)
 
 # DESCRIPTION
 
-The _rc_ system comprises scripts that manage system initialization,
-service control, and shutdown.
+The _rc_ system consists of shell scripts that manage system
+initialization, service startup, and shutdown.
 These scripts are invoked by *init*(8) and are
 *not intended for manual execution*.
 
@@ -78,10 +80,10 @@ _/etc/rc.shutdown_
 	System shutdown script.
 
 _/etc/rc.conf_
-	System boot configuration file.
+	System startup configuration file.
 
 _/etc/rc.d/_
-	Service control scripts.
+	Service control script directory.
 
 _/var/log/dmesg_
 	Kernel ring buffer after boot.
