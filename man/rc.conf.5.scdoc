@@ -2,7 +2,7 @@ RC.CONF(5)
 
 # NAME
 
-rc.conf - system configuration file
+rc.conf - system boot configuration file
 
 # SYNOPSIS
 
@@ -10,10 +10,10 @@ rc.conf - system configuration file
 
 # DESCRIPTION
 
-_/etc/rc.conf_ is a POSIX *sh*(1p) script defining system settings,
-console, and services.
-Use 'variable=value' assignments.
-Lines starting with '*#*' are comments.
+The _/etc/rc.conf_ file is a POSIX *sh*(1p) script defining system
+settings, console parameters, and enabled services.
+Configuration is expressed as 'variable=value'.
+Lines beginning with '*#*' are comments.
 
 The configuration variables are:
 
@@ -85,7 +85,7 @@ The configuration variables are:
 
 # EXAMPLES
 
-Minimal configuration _/etc/rc.conf_:
+Minimal _/etc/rc.conf_:
 
 ```
 #
