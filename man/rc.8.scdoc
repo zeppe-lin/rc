@@ -3,7 +3,7 @@ RC(8)
 # NAME
 
 rc, rc.single, rc.multi, rc.modules, rc.local, rc.shutdown, rc.d/ \
-- startup and shutdown scripts
+- system startup and shutdown scripts
 
 # SYNOPSIS
 
@@ -20,33 +20,42 @@ init(8)
 
 # DESCRIPTION
 
-The _rc_ system consists of scripts that control system boot,
-shutdown, and service management.
+The _rc_ system comprises scripts that manage system initialization,
+service control, and shutdown.
 These scripts are invoked by *init*(8) and are
-*not intended to be run manually*.
+*not intended for manual execution*.
 
-*rc* controls the system boot, and is invoked by *init*(8) as part of
-init process.
+*rc*
+	Primary boot script.
+	Mounts virtual filesystems, initializes devices, configures
+	system settings, and prepares for multi-user or single-user
+	mode.
 
-*rc.single* handles what to do in single-user mode.
+*rc.single*
+	Transitions to single-user mode.
+	Stops services, mounts virtual filesystems, and starts minimal
+	device management.
 
-*rc.multi* handles what to do in multi-user mode.
+*rc.multi*
+	Transitions to multi-user mode.
+	Starts services listed in *rc.conf*(5), then runs *rc.local*.
 
-*rc.modules* allows adding kernel module initialization actions.
-It is (nearly) the last thing invoked by *rc* during system boot.
+*rc.modules*
+	Initializes kernel modules.
+	Invoked near the end of *rc*.
 
-*rc.local* allows adding local boot-time actions.
-It is (nearly) the last thing invoked by *rc.multi* during a normal
-boot.
+*rc.local*
+	User-defined script for local boot-time actions.
+	Invoked after all services in *rc.multi*.
 
-*rc.shutdown* shuts down various services, and is invoked by
-*shutdown*(8) as part of the process of shutting down the system.
+*rc.shutdown*
+	Handles system shutdown.
+	Stops services, saves state, unmounts filesystems, and powers
+	off or reboots.
 
-*rc.d/* is a directory containing various *sh*(1p) scripts for
-controlling services.
-These scripts are called by *rc.multi* at startup, *rc.shutdown* at
-shutdown, and as necessary during system operation to stop, start,
-restart, reload or otherwise control the service.
+*rc.d/*
+	Directory of *sh*(1p) scripts for service control.
+	Used by *rc.multi*, *rc.shutdown*, and *rc.single*.
 
 # FILES
 
@@ -54,10 +63,10 @@ _/etc/rc_
 	System boot script.
 
 _/etc/rc.single_
-	Single-User startup script.
+	Single-user startup script.
 
 _/etc/rc.multi_
-	Multi-User startup script.
+	Multi-user startup script.
 
 _/etc/rc.modules_
 	Kernel module initialization script.
@@ -72,13 +81,13 @@ _/etc/rc.conf_
 	System boot configuration file.
 
 _/etc/rc.d/_
-	Directory containing control scripts for each service.
+	Service control scripts.
 
 _/var/log/dmesg_
-	*dmesg*(1) output, written at the end of *rc* execution.
+	Kernel ring buffer after boot.
 
 _/var/log/boot_
-	Log from *bootlogd*(8).
+	Recorded boot messages.
 
 # SEE ALSO
 
