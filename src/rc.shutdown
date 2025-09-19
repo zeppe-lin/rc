@@ -11,17 +11,15 @@
 
 echo "The system is coming down.  Please wait."
 
-if [ "$PREVLEVEL" = "2" ]; then
-	# Shutdown services.
-	if [ -n "$SERVICES" ]; then
-		for service in   $SERVICES; do
-			R_SERVICES="$service $R_SERVICES"
-		done
-		for service in $R_SERVICES; do
-			/etc/rc.d/"$service" stop 2>&1 |
-				/usr/bin/logger -t "$service"
-		done
-	fi
+# Stop services if transitioning from multi-user mode.
+if [ "$PREVLEVEL" = "2" ] && [ -n "$SERVICES" ]; then
+	for service in   $SERVICES; do
+		R_SERVICES="$service $R_SERVICES"
+	done
+	for service in $R_SERVICES; do
+		/etc/rc.d/"$service" stop 2>&1 |
+			/usr/bin/logger -t "$service"
+	done
 fi
 
 # Terminate all processes.
@@ -45,14 +43,18 @@ fi
 
 # Unmount file systems.
 /bin/umount -a -d -r -t nosysfs,noproc,nodevtmpfs
+
+# Unmap encrypted volumes.
 if [ -f /etc/crypttab ] && [ -x /sbin/cryptmount ]; then
-	# Unmap encrypted volumes.
 	/sbin/cryptmount -U
 fi
+
+# Deactivate LVM volumes.
 if [ -x /sbin/lvm ]; then
-	# Change the active state of LVs.
 	/sbin/vgchange --ignorelockingfailure -a n
 fi
+
+# Final unmount pass.
 /bin/umount -a -r
 
 # Remount root file system read-only.
