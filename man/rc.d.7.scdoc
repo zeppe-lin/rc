@@ -10,8 +10,8 @@ rc.d - directory for service control scripts
 
 # DESCRIPTION
 
-_/etc/rc.d_ directory contains shell scripts to start, stop, restart
-or check system services.
+The _/etc/rc.d_ directory contains shell scripts to start, stop,
+restart or check system services.
 
 Each script in this directory typically corresponds to a specific
 service and is responsible for starting, stopping, and potentially
