@@ -118,4 +118,13 @@ SERVICES="lo crond net"
 *rc.d*(7),
 *rc*(8)
 
+# CAVEATS
+
+_/etc/rc.conf_ is sourced by *rc*(8) scripts at startup.
+While its primary role is to define shell variables for system
+configuration, any exported environment variables will also be
+inherited by programs invoked during boot.
+This can influence program behaviour, though it is incidental and not
+a formally supported configuration method.
+
 ; vim: ft=scdoc cc=72 tw=70

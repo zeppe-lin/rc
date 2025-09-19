@@ -99,4 +99,11 @@ _/var/log/boot_
 *shutdown*(8),
 *reboot*(8)
 
+# CAVEATS
+
+Environment variables defined in *rc.conf*(5) are inherited by
+programs invoked by _rc_ scripts.
+This behavior can influence programs incidentally, but it is not a
+primary configuration mechanism.
+
 ; vim: ft=scdoc cc=72 tw=70
