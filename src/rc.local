@@ -3,11 +3,5 @@
 # /etc/rc.local: local multi-user startup script
 #
 
-# Stop bootlog after boot.
-#if [ "$BOOTLOG" ]; then
-#	if [ -f /etc/rc.d/"$BOOTLOG" ] && [ -x /etc/rc.d/"$BOOTLOG" ]; then
-#		/etc/rc.d/"$BOOTLOG" stop
-#	fi
-#fi
 
 # End of file.
