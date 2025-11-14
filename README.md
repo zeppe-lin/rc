@@ -79,8 +79,8 @@ Customize the following files after installation:
 2. `/etc/inittab`: Manages the boot process and runlevels.
    (See `inittab(5)`).
 
-For examples, check `extra/rc.conf.sample` or the Zeppe-Lin
-[rc package](https://github.com/zeppe-lin/pkgsrc-core/tree/1.x/rc).
+For examples, check `extra/rc.conf.sample`, `extra/inittab.sample`, or
+the Zeppe-Lin [rc package](https://github.com/zeppe-lin/pkgsrc-core/tree/1.x/rc).
 
 **Note on POSIX Environments**:
 Some versions of `mount(1)` may not support non-numeric group names.
