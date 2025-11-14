@@ -69,15 +69,24 @@ To install this package, run:
 
 Configuration parameters are in `config.mk`.
 
-Next, customize `/etc/rc.conf` and `/etc/inittab`
-(see `rc.conf(5)` and `inittab(5)`).
+Post-Install
+------------
+
+Customize the following files after installation:
+
+1. `/etc/rc.conf`: System-wide settings and `SERVICES` list.
+   (See `rc.conf(5)`).
+2. `/etc/inittab`: Manages the boot process and runlevels.
+   (See `inittab(5)`).
+
 For examples, check `extra/rc.conf.sample` or the Zeppe-Lin
 [rc package](https://github.com/zeppe-lin/pkgsrc-core/tree/1.x/rc).
 
-**Notes for `sbase`/`ubase` users:** Replace `gid=tty` by `gid=<tty
-group number>` (e.g., `tty=5`) in `rc` file, where `/dev/pts` is
-mounting.  Some versions of `mount` do not support non-numeric group
-names.
+**Note on POSIX Environments**:
+Some versions of `mount(1)` may not support non-numeric group names.
+If encountering issues mounting `/dev/pts`, replace the group name
+`git=tty` with the corresponding group ID number (e.g., `gid=5`) in
+the main `rc` script.
 
 
 DOCUMENTATION
