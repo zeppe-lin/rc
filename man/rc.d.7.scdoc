@@ -10,19 +10,30 @@ rc.d - service control script directory
 
 # DESCRIPTION
 
-The _/etc/rc.d_ directory contains shell scripts that start, stop, and
-manage system services.
-The *SERVICES* variable in *rc.conf*(5) specifies which of these
-scripts are run automatically at boot; others may be run manually
-by the administrator:
+The _/etc/rc.d_ directory contains simple, executable shell scripts
+used to start, stop, and manage system services.
+
+During system startup, *rc*(8) reads the *SERVICES* variable from
+*rc.conf*(5).
+For each service listed, *rc*(8) executes the corresponding script in
+_/etc/rc.d/_ with the _start_ argument.
+
+## Manual Usage
+
+Any script in _/etc/rc.d_ can be run manually from the command line to
+control a service.
+*All scripts must be run as root*.
 
 ```
 /etc/rc.d/sshd start
 /etc/rc.d/dbus stop
+/etc/rc.d/sshd restart
 ```
 
-Each script is named after its service (e.g., sshd, dhcpcd) and must
-accept the following standard actions:
+## Script Actions
+
+Each script is a standard *sh*(1p) program that is expected to respond
+to the following standard arguments:
 
 *start*
 	Start the service.
@@ -31,56 +42,56 @@ accept the following standard actions:
 *restart*
 	Stop and then start the service.
 *status*
-	Show whether the service is currently running.
+	Report whether the service is running.
 
-Some scripts also implement:
+Scripts may implement additional optional arguments, such as:
 
 *reload*
-	Reload configuration without restarting.
+	Reload configuration without a full restart.
 *configtest*
-	Check configuration syntax.
+	Check configuration file syntax.
 
-Service scripts are written in *sh*(1p), typically using a *case*
-statement to handle actions.
-Process management is usually delegated to *start-stop-daemon*(8).
+## Implementation
 
-For maintainability, scripts often define the following variables:
-
-*PROG*
-	Path to the service executable.
-*PID*
-	Path to the PID file, usually in _/run_ or _/var/run_.
-*SSD*
-	Path to *start-stop-daemon*(8) (for brevity).
-*OPTS*
-	Command-line options for the service.
+Service scripts commonly define the daemon path and PID file, then
+dispatch actions through a simple *case* block.
+Scripts must accept the standard arguments: start, stop, restart, and
+status.
+Additional optional arguments may be implemented, depending on
+service.
+The utility *start-stop-daemon*(8) is recommended to handle
+daemonization, PID file management, and process signaling, keeping
+scripts minimal.
 
 # FILES
 
 _/etc/rc.d/_
-	Service control script directory.
+	Directory containing service control scripts.
+
+_/etc/rc.conf_
+	System configuration file defining the *SERVICES* list.
 
 # EXAMPLES
 
-A minimal service script:
+Below is a complete, functional service script for *dhclient*(8):
 
 ```
 #!/bin/sh
 #
-# /etc/rc.d/daemon: service control script for daemon(8)
+# /etc/rc.d/dhclient: start/stop dhclient(8) daemon
 #
 
 SSD=/sbin/start-stop-daemon
-PROG=/usr/sbin/daemon
-PID=/run/daemon.pid
-OPTS="--some-opts"
+PROG=/usr/sbin/dhclient
+PID=/run/dhclient.pid
+OPTS="-q -pf $PID"
 
 case $1 in
 start)
 	$SSD --start --pidfile $PID --exec $PROG -- $OPTS
 	;;
 stop)
-	$SSD --stop --pidfile $PID --retry 10
+	$SSD --stop --remove-pidfile --retry 10 --pidfile $PID
 	;;
 restart)
 	$0 stop
@@ -92,11 +103,11 @@ status)
 	0) echo "$PROG is running with pid $(cat $PID)" ;;
 	1) echo "$PROG is not running but the pid file $PID exists" ;;
 	3) echo "$PROG is not running" ;;
-	4) echo "Unable to determine program status" ;;
+	4) echo "Unable to determine the program status" ;;
 	esac
 	;;
 *)
-	echo "usage: $0 [start|stop|restart|status]"
+	echo "Usage: $0 [start|stop|restart|status]"
 	;;
 esac
 
@@ -105,9 +116,9 @@ esac
 
 # SEE ALSO
 
-*sh*(1p),
-*start-stop-daemon*(1),
+*rc*(8),
 *rc.conf*(5),
-*rc*(8)
+*start-stop-daemon*(1),
+*sh*(1p)
 
 ; vim: ft=scdoc cc=72 tw=70

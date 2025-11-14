@@ -12,7 +12,7 @@ rc.conf - system startup configuration file
 
 The _/etc/rc.conf_ file defines system-wide startup parameters for
 *rc*(8) scripts.
-It is read during boot to configure the hostname, console settings,
+It is read during boot to configure hostname, console settings,
 timezone, and the list of services to start.
 
 # FILE FORMAT
@@ -20,6 +20,7 @@ timezone, and the list of services to start.
 The file is a POSIX *sh*(1p) script consisting primarily of variable
 assignments.
 Lines beginning with '*#*' are comments.
+Blank lines are ignored.
 Because the file is interpreted by the shell, standard syntax such as
 quoting, variable expansion, command substitution, conditionals,
 functions, and loops may also be used.
@@ -31,7 +32,7 @@ The following variables are recognized:
 *BLANKTIME*=<_0-60_ | _force_ | _poke_>
 	Console inactivity timeout in minutes for screen blanking,
 	passed to *setterm*(1).
-	_force_ keeps screen blank.
+	_force_ keeps the screen blank.
 	_poke_ unblanks it.
 
 	Default: 15.
@@ -82,6 +83,7 @@ The following variables are recognized:
 	Each service requires a corresponding script in _/etc/rc.d_.
 	Services are started in the order listed and stopped in
 	reverse order at shutdown.
+	*The order of SERVICES matters*.
 
 	For details on service script structure and conventions, see
 	*rc.d*(7).
@@ -124,9 +126,10 @@ SERVICES="lo crond net"
 
 _/etc/rc.conf_ is sourced by *rc*(8) scripts at startup.
 While its primary role is to define shell variables for system
-configuration, any exported environment variables will also be
-inherited by programs invoked during boot.
-This can influence program behaviour, though it is incidental and not
-a formally supported configuration method.
+configuration, any exported environment variables are inherited by
+programs invoked during boot.
+This may influence program behavior; it is incidental and not a
+formally supported configuration method.
+Do not use _rc.conf_ to export variables for user processes.
 
 ; vim: ft=scdoc cc=72 tw=70

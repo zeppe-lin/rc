@@ -11,11 +11,11 @@ System boot sequence as invoked by *init*(8):
 
 ```
 init(8)
-|-- rc
+|-- rc              # primary boot script
 |   `-- rc.modules
-|-- rc.single
-|-- rc.multi
-|   |-- rc.d/
+|-- rc.single       # single-user mode
+|-- rc.multi        # multi-user mode
+|   |-- rc.d/       # service scripts
 |   `-- rc.local
 `-- rc.shutdown
 ```
@@ -103,7 +103,7 @@ _/var/log/boot_
 
 Environment variables defined in *rc.conf*(5) are inherited by
 programs invoked by _rc_ scripts.
-This behavior can influence programs incidentally, but it is not a
+This may influence program behavior; it is incidental and not a
 primary configuration mechanism.
 
 ; vim: ft=scdoc cc=72 tw=70
