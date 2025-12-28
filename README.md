@@ -98,6 +98,7 @@ Manual pages are in `/man`.
 LICENSE
 =======
 
-`rc` is licensed through the GNU General Public License v3 or later
-<https://gnu.org./licenses/gpl.html>.
+`rc` is licensed through the
+[GNU General Public License v3 or later](https://gnu.org./licenses/gpl.html).
+
 See `COPYING` for terms and `COPYRIGHT` for notices.
