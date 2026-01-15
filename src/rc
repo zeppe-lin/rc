@@ -123,7 +123,12 @@ fi
 /bin/rm -rf /forcefsck /fastboot /etc/nologin /etc/shutdownpid
 (cd /var/lock && /usr/bin/find . ! -type d -delete)
 (cd /tmp      && /usr/bin/find . ! -name . -delete)
-/bin/mkdir -m 1777 /tmp/.ICE-unix /tmp/.X11-unix
+
+# ICE sockets (session managers, clipboard)
+/bin/mkdir -m 1777 /tmp/.ICE-unix
+
+# X11 sockets (X server/clients)
+/bin/mkdir -m 1777 /tmp/.X11-unix
 
 # Set kernel variables.
 /sbin/sysctl -p >/dev/null
