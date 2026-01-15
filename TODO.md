@@ -8,8 +8,9 @@ No milestone
 - [ ] `cryptmount` mounts `%random` volumes before `seedrng`:
   https://github.com/zeppe-lin/rc/issues/8
 
-- [ ] Is `/usr/bin/logger` invocation a problem due to separate `/usr`
-  problem?
+- [ ] Early Boot /usr Separation: Transition RC Scripts to rootfs-only
+  (/) Binaries:
+  https://github.com/zeppe-lin/rc/issues/10
 
 - [ ] Remove `/usr/bin/find` invocations:
   https://github.com/zeppe-lin/rc/issues/6
