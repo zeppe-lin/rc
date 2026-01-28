@@ -8,6 +8,11 @@ if [ -x /sbin/depmod ]; then
 	/sbin/depmod -a
 fi
 
+# Load modules from configuration directories.
+if [ -x /sbin/modules-load ]; then
+	/sbin/modules-load
+fi
+
 # Add custom module loading commands below.
 # Example:
 #   /sbin/modprobe loop
