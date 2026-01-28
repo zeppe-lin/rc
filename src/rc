@@ -73,9 +73,10 @@ if [ -x /sbin/mdadm ]; then
 	/sbin/mdadm --assemble --scan
 fi
 
-# Parse crypttab and map encrypted volumes.
+# Map encrypted volumes needed for fsck/fstab.
+# Run only non-%random volumes here, since they may be listed in fstab.
 if [ -f /etc/crypttab ] && [ -x /sbin/cryptmount ]; then
-	/sbin/cryptmount -M
+	/sbin/cryptmount -M -O '!%random'
 fi
 
 # Mount root read-only.
@@ -112,6 +113,16 @@ fi
 /bin/mount -o remount,rw /
 /bin/mount -a -O no_netdev
 
+# Load random seed before handling %random volumes.
+if [ -x /sbin/seedrng ]; then
+	/sbin/seedrng
+fi
+
+# Map %random volumes now that RNG is seeded.
+if [ -f /etc/crypttab ] && [ -x /sbin/cryptmount ]; then
+	/sbin/cryptmount -M -O '%random'
+fi
+
 # Create user runtime directory.
 /bin/mkdir -m 0755 /run/user
 
@@ -140,11 +151,6 @@ fi
 if [ "$HOSTNAME" ]; then
 	echo "hostname: $HOSTNAME"
 	/bin/hostname "$HOSTNAME"
-fi
-
-# Load random seed.
-if [ -x /sbin/seedrng ]; then
-	/sbin/seedrng
 fi
 
 # Set system timezone.
