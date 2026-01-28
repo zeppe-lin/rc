@@ -10,7 +10,7 @@ fi
 
 # Load modules from configuration directories.
 if [ -x /sbin/modules-load ]; then
-	/sbin/modules-load
+	/sbin/modules-load -v
 fi
 
 # Add custom module loading commands below.
