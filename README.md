@@ -21,6 +21,8 @@ from the `rc` port) with the following changes:
   * Mount `/dev/pts` and `/dev/shm` after `/dev`
   * Mount all virtual filesystems without writing to `/etc/mtab`,
     supporting read-only `/etc`
+  * Optional delegation of module list handling to the standalone
+    `modules-load(8)` utility.
 
 See git log for full history.
 
@@ -58,6 +60,8 @@ The following dependencies are optional:
   * `mdadm(8)` from `mdadm` to detect and assemble RAID devices
   * `cryptmount(8)` from `cryptmount` to map/unmap encrypted volumes
     (requires `cryptsetup(8)`, `blkid(8)` and `mkswap(8)`)
+  * `modules-load(8)` from Zeppe-Lin to load modules from
+    configuration directories
 
 
 INSTALLATION
