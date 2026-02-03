@@ -101,7 +101,7 @@ status)
 	$SSD --status --verbose --pidfile $PID --exec $PROG
 	;;
 *)
-	echo "Usage: $0 [start|stop|restart|status]"
+	echo "Usage: $0 {start|stop|restart|status}"
 	;;
 esac
 
