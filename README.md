@@ -22,7 +22,7 @@ from the `rc` port) with the following changes:
   * Mount all virtual filesystems without writing to `/etc/mtab`,
     supporting read-only `/etc`
   * Optional delegation of module list handling to the standalone
-    `modules-load(8)` utility.
+    `modules-load(8)` utility
 
 See git log for full history.
 
@@ -69,7 +69,10 @@ INSTALLATION
 
 To install this package, run:
 
-    make install
+```sh
+# as root
+make install
+```
 
 Configuration parameters are in `config.mk`.
 
@@ -78,10 +81,10 @@ Post-Install
 
 Customize the following files after installation:
 
-1. `/etc/rc.conf`: System-wide settings and `SERVICES` list.
-   (See `rc.conf(5)`).
-2. `/etc/inittab`: Manages the boot process and runlevels.
-   (See `inittab(5)`).
+1. `/etc/rc.conf`: System-wide settings and `SERVICES` list
+   (see `rc.conf(5)`).
+2. `/etc/inittab`: Manages the boot process and runlevels
+   (see `inittab(5)`).
 
 For examples, check `extra/rc.conf.sample`, `extra/inittab.sample`, or
 the Zeppe-Lin [rc package](https://github.com/zeppe-lin/pkgsrc-core/tree/1.x/rc).
