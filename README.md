@@ -101,7 +101,8 @@ ID (e.g., `gid=5`) in the main `rc` script.
 DOCUMENTATION
 =============
 
-See manual pages in `/man`.
+Manual pages are provided in `/man` and installed under the system
+manual hierarchy.
 
 ---
 
