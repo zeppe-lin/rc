@@ -3,8 +3,8 @@ OVERVIEW
 
 Init scripts for `sysvinit` on Zeppe-Lin.
 
-This project is a fork of CRUX init scripts (version 2.31, extracted
-from the `rc` port) with the following changes:
+This distribution is a fork of CRUX init scripts (version 2.31,
+extracted from the `rc` port), with the following differences:
   * Rewritten in POSIX `sh(1p)` instead of `bash(1)`
   * Added manual pages: `rc(8)`, `rc.conf(5)`, and `rc.d(7)`
   * Optional `seedrng(8)` support to seed the kernel RNG from seed
@@ -24,8 +24,10 @@ from the `rc` port) with the following changes:
   * Optional delegation of module list handling to the standalone
     `modules-load(8)` utility
 
-See the git log for full history.  
-Original sources: <https://git.crux.nu/ports/core/src/branch/3.6/rc>
+See the git log for full history.
+
+Original sources:
+  * <https://git.crux.nu/ports/core/src/branch/3.6/rc>
 
 ---
 
